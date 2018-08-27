@@ -16,11 +16,9 @@ app.set("view options", { layout: false } );
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 
+
 app.get('/', function (req, res) {
-    res.send('privacy and policy : no one can use our copyrights.')
-});
-app.get('/imun', function (req, res) {
-    res.render('');
+    res.render('main');
 });
 
 app.listen(app.get('port'), function() {
