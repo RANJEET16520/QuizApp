@@ -4,6 +4,8 @@ var request = require('request');
 
 var app = express();
 app.set('port', (process.env.PORT || 5000))
+app.set('view engine', 'ejs');
+app.set('views','./views');
 
 var path = require('path');
 app.use('/static',express.static(__dirname + '/public'));
@@ -16,7 +18,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.get('/', function (req, res) {
     res.send('privacy and policy : no one can use our copyrights.')
-})
+});
+app.get('/imun', function (req, res) {
+    res.render('');
+});
 
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
