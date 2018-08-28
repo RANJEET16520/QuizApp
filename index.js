@@ -20,7 +20,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.get('/', function (req, res) {
     res.render('main');
 });
-app.get('/register', function (req, res) {
+app.get('/register', function (req, res)
+{
     res.render('reg');
 });
 
