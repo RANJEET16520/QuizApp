@@ -25,6 +25,27 @@ app.get('/register', function (req, res)
     res.render('reg');
 });
 
+app.post('/register',function (req,res) {
+  var username = req.body.username;
+  var password = req.body.password;
+  var email = req.body.email;
+  var fullname = req.body.fullname;
+  var grade = {
+  	username : username,
+    password : password,
+    email : email,
+    fullname : fullname,
+  };
+  grade.save(function (err) {
+    if(err)
+    {
+      console.log("error");
+    }
+    else
+      console.log(res);
+  });
+});
+
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
