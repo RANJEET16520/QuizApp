@@ -486,7 +486,6 @@ nav a:hover:before {
 }
 
 h1 {
-    text-transform: uppercase;
     font-family: "Allerta", sans-serif;
     font-size: 4.5em;
     overflow: hidden;
@@ -502,7 +501,7 @@ h1 {
 }
 
 .section-heading {
-    text-transform: uppercase;
+    
     position: relative;
     font-family: Montserrat, sans-serif;
     font-size: 1.3em;
@@ -712,14 +711,14 @@ p,
         width: 50%
     }
     .speaker-info {
-        height: 350px;
-        width: 100%
+        height: 100%;
+        width: 110%
     }
 }
 
 @media all and (min-width: 768px) {
     .main-speaker {
-        flex-direction: row
+        flex-direction: rowKER
     }
 }
 

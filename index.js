@@ -20,6 +20,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.get('/', function (req, res) {
     res.render('main');
 });
+app.get('/register', function (req, res) {
+    res.render('reg');
+});
 
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
