@@ -1,5 +1,5 @@
 {
-  "name": "imun",
+  "name": "team_exe_quiz_web",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shkamboj/imun.git"
+    "url": "git+https://github.com/shkamboj/Team_EXE_QUIZ_WEB.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/shkamboj/imun/issues"
+    "url": "https://github.com/shkamboj/Team_EXE_QUIZ_WEB/issues"
   },
-  "homepage": "https://github.com/shkamboj/imun#readme",
+  "homepage": "https://github.com/shkamboj/Team_EXE_QUIZ_WEB#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
