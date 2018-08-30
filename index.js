@@ -7,6 +7,7 @@ var app = express();
 app.set('port', (process.env.PORT || 5000))
 
 var MongoClient = mongodb.MongoClient;
+var srl = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
 
 app.set('view engine', 'ejs');
 app.set('views','./views');
