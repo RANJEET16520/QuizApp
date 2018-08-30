@@ -1,37 +1,31 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
-var mongodb = require('mongodb');
+var mongoose = require('mongoose');
+
+var personSchema = mongoose.Schema({
+    rollno:{type: String,
+      required: true,
+      unique: true
+    },
+    email:{type:String,
+      required :true,
+      unique: true},
+    password:{type: String,
+      required: true
+    }
+});
+var Person = mongoose.model("Person", personSchema);
+
 
 var app = express();
 app.set('port', (process.env.PORT || 5000));
 
-//lets require/import the mongodb native drivers.
-
-
-//We need to work with "MongoClient" interface in order to connect to a mongodb server.
-var MongoClient = mongodb.MongoClient;
-
-// Connection URL. This is where your mongodb server is running.
-
-//(Focus on This Variable)
-var uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';      
+var uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';    
 //(Focus on This Variable)
 
 // Use connect method to connect to the Server
-  MongoClient.connect(uri, function (err, db) {
-  if (err) {
-    console.log('Unable to connect to the mongoDB server. Error:', err);
-  } else {
-    console.log('Connection established to', uri);
-
-    // do some work here with the database.
-    db.createCollection('abc');
-    abc.insert({"name":"Shubham"});
-    //Close connection
-    db.close();
-  }
-});
+  mongoose.connect(uri);
 
 
 
@@ -58,6 +52,31 @@ app.get('/', function (req, res) {
 app.get('/register', function (req, res)
 {
     res.render('reg');
+});
+
+app.get('/signup',function(req,res){
+   res.render('signup');
+});
+
+
+app.post('/signup',function (req,res) {
+  var rollno = req.body.rollno;
+  var email = req.body.email;
+  var password = req.body.password;
+  var person = new Person({
+    rollno : rollno,
+    email : email,
+    password : password,
+  });
+  console.log(person);
+  person.save(function (err) {
+    if(err)
+    {
+      console.log("error");
+    }
+    else
+      console.log(res);
+  });
 });
 
 app.listen(app.get('port'), function() {
