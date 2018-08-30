@@ -27,9 +27,6 @@ app.get('/', function (req, res) {
     res.render('main');
 });
 
-app.get('/ssss', function (req, res) {
-    db.createCollection("ABC");
-});
 
 app.get('/register', function (req, res)
 {
