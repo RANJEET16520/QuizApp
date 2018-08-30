@@ -9,6 +9,19 @@ app.set('port', (process.env.PORT || 5000))
 var MongoClient = mongodb.MongoClient;
 var srl = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
 
+// Use connect method to connect to the Server
+  MongoClient.connect(url, function (err, db) {
+  if (err) {
+    console.log('Unable to connect to the mongoDB server. Error:', err);
+  } else {
+    console.log('Connection established to', url);
+
+    // do some work here with the database.
+
+    //Close connection
+  }
+});
+
 app.set('view engine', 'ejs');
 app.set('views','./views');
 
