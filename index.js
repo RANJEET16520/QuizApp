@@ -1,12 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
+var mongodb = require('mongodb');
 
 var app = express();
 app.set('port', (process.env.PORT || 5000));
 
 //lets require/import the mongodb native drivers.
-var mongodb = require('mongodb');
+
 
 //We need to work with "MongoClient" interface in order to connect to a mongodb server.
 var MongoClient = mongodb.MongoClient;
