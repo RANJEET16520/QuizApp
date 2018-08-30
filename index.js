@@ -10,11 +10,11 @@ var MongoClient = mongodb.MongoClient;
 var srl = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
 
 // Use connect method to connect to the Server
-  MongoClient.connect(url, function (err, db) {
+  MongoClient.connect(srl, function (err, db) {
   if (err) {
     console.log('Unable to connect to the mongoDB server. Error:', err);
   } else {
-    console.log('Connection established to', url);
+    console.log('Connection established to', srl);
 
     // do some work here with the database.
 
