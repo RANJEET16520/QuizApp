@@ -18,6 +18,28 @@ var srl = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
 
     // do some work here with the database.
 
+    db.createCollection( "contacts", {
+   validator: { $jsonSchema: {
+      bsonType: "object",
+      required: [ "phone" ],
+      properties: {
+         phone: {
+            bsonType: "string",
+            description: "must be a string and is required"
+         },
+         email: {
+            bsonType : "string",
+            pattern : "@mongodb\.com$",
+            description: "must be a string and match the regular expression pattern"
+         },
+         status: {
+            enum: [ "Unknown", "Incomplete" ],
+            description: "can only be one of the enum values"
+         }
+      }
+   } }
+} );
+
     //Close connection
     db.close();
   }
