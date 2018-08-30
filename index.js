@@ -25,7 +25,7 @@ var uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
 //(Focus on This Variable)
 
 // Use connect method to connect to the Serve
-  mongoose.connect(uri)then(res=>res.send("Connected")).catch(err=>res.send(err));
+  mongoose.connect(uri).then(res=>res.send("Connected")).catch(err=>res.send(err));
 
 
 
