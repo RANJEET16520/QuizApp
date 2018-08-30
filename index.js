@@ -30,13 +30,7 @@ let seedData = [
 
 let uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
 
-mongodb.MongoClient.connect(uri, function() {
-
-
-   db.createCollection('songs');
-
-  songs.insert(seedData);
-});
+mongodb.MongoClient.connect(uri);
 
 
 
