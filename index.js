@@ -34,19 +34,7 @@ mongodb.MongoClient.connect(uri, function(err) {
 
   if(err) throw err;
 
-  /*
-   * Get the database from the client. Nothing is required to create a
-   * new database, it is created automatically when we insert.
-   */
-
-  /*
-   * First we'll add a few songs. Nothing is required to create the
-   * songs collection; it is created automatically when we insert.
-   */
-
-  let songs = db.collection('songs');
-
-   // Note that the insert method can take either an array or a dict.
+   db.createCollection('songs');
 
   songs.insert(seedData);
 });
