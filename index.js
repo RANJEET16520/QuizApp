@@ -12,6 +12,36 @@ let uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
 
 mongoose.connect(uri);
 
+var personSchema = mongoose.Schema({
+    rollno:{type: String,
+      required: true,
+      unique: true
+    },
+    email:{type:String,
+      required :true,
+      unique: true},
+    password:{type: String,
+      required: true
+    }
+});
+var Person = mongoose.model("Person", personSchema);
+
+var person = new Person({
+    rollno : "IIITU16118",
+    email : "iiitu16118@gmail.com",
+    password : "abcdef",
+  });
+
+person.save(function (err) {
+    if(err)
+    {
+      console.log("error");
+    }
+    else
+      console.log(res);
+  });
+
+
 
 app.set('view engine', 'ejs');
 app.set('views','./views');
