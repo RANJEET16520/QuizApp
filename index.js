@@ -30,7 +30,7 @@ let seedData = [
 
 let uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
 
-mongodb.MongoClient.connect(uri, function(err, client) {
+mongodb.MongoClient.connect(uri, function(err) {
 
   if(err) throw err;
 
