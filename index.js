@@ -24,8 +24,8 @@ app.set('port', (process.env.PORT || 5000));
 var uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';    
 //(Focus on This Variable)
 
-// Use connect method to connect to the Server
-  mongoose.connect(uri);
+// Use connect method to connect to the Serve
+  mongoose.connect(uri)then(res=>res.send("Connected")).catch(err=>res.send(err));
 
 
 
