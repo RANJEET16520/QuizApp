@@ -19,6 +19,7 @@ var srl = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
     // do some work here with the database.
 
     //Close connection
+    db.close();
   }
 });
 
