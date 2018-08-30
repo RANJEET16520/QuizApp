@@ -1,22 +1,17 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
-var mongo = require('mongodb');
+const mongoose = require('mongoose');
+
+
 
 var app = express();
-app.set('port', (process.env.PORT || 5000))
+app.set('port', (process.env.PORT || 5000));
 
-mongo.connect(process.env.MONGOLAB_URI, {}, function(error, db){
+let uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
 
-  // console.log will write to the heroku log which can be accessed via the 
-  // command line as "heroku logs"
-  db.addListener("error", function(error){
-    console.log("Error connecting to MongoLab");
-  });
-  db.createCollection('requests');
-  db.requests.insert("name":"shubham");
-    
-});
+mongoose.connect(uri);
+
 
 app.set('view engine', 'ejs');
 app.set('views','./views');
