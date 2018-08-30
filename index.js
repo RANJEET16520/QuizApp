@@ -6,6 +6,7 @@ var mongodb = require('mongodb');
 var app = express();
 app.set('port', (process.env.PORT || 5000))
 
+var MongoClient = mongodb.MongoClient;
 
 app.set('view engine', 'ejs');
 app.set('views','./views');
