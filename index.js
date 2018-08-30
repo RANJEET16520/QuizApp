@@ -1,49 +1,21 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
-var mongodb = require('mongodb');
+var mongo = require('mongodb');
 
 var app = express();
 app.set('port', (process.env.PORT || 5000))
 
-var MongoClient = mongodb.MongoClient;
-var srl = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
+mongo.connect(process.env.MONGOLAB_URI, {}, function(error, db){
 
-// Use connect method to connect to the Server
-  MongoClient.connect(srl, function (err, db) {
-  if (err) {
-    console.log('Unable to connect to the mongoDB server. Error:', err);
-  } else {
-    console.log('Connection established to', srl);
-
-    // do some work here with the database.
-
-    db.createCollection( "contacts", {
-   validator: { $jsonSchema: {
-      bsonType: "object",
-      required: [ "phone" ],
-      properties: {
-         phone: {
-            bsonType: "string",
-            description: "must be a string and is required"
-         },
-         email: {
-            bsonType : "string",
-            pattern : "@mongodb\.com$",
-            description: "must be a string and match the regular expression pattern"
-         },
-         status: {
-            enum: [ "Unknown", "Incomplete" ],
-            description: "can only be one of the enum values"
-         }
-      }
-   } }
-} );
-    db.contacts.insert( { name: "Amanda", status: "Updated" } );
-
-    //Close connection
-    db.close();
-  }
+  // console.log will write to the heroku log which can be accessed via the 
+  // command line as "heroku logs"
+  db.addListener("error", function(error){
+    console.log("Error connecting to MongoLab");
+  });
+  db.createCollection('requests');
+  db.requests.insert("name":"shubham");
+    
 });
 
 app.set('view engine', 'ejs');
