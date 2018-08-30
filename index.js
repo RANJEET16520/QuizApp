@@ -1,36 +1,36 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
-const mongodb = require('mongodb');
 
 var app = express();
 app.set('port', (process.env.PORT || 5000));
 
-let seedData = [
-  {
-    decade: '1970s',
-    artist: 'Debby Boone',
-    song: 'You Light Up My Life',
-    weeksAtOne: 10
-  },
-  {
-    decade: '1980s',
-    artist: 'Olivia Newton-John',
-    song: 'Physical',
-    weeksAtOne: 10
-  },
-  {
-    decade: '1990s',
-    artist: 'Mariah Carey',
-    song: 'One Sweet Day',
-    weeksAtOne: 16
+//lets require/import the mongodb native drivers.
+var mongodb = require('mongodb');
+
+//We need to work with "MongoClient" interface in order to connect to a mongodb server.
+var MongoClient = mongodb.MongoClient;
+
+// Connection URL. This is where your mongodb server is running.
+
+//(Focus on This Variable)
+var uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';      
+//(Focus on This Variable)
+
+// Use connect method to connect to the Server
+  MongoClient.connect(uri, function (err, db) {
+  if (err) {
+    console.log('Unable to connect to the mongoDB server. Error:', err);
+  } else {
+    console.log('Connection established to', uri);
+
+    // do some work here with the database.
+    db.createCollection('abc');
+    abc.insert({"name":"Shubham"});
+    //Close connection
+    db.close();
   }
-];
-
-
-let uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
-
-mongodb.MongoClient.connect(uri);
+});
 
 
 
