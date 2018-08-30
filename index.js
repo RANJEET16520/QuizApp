@@ -1,9 +1,14 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
+var mongodb = require('mongodb');
 
 var app = express();
 app.set('port', (process.env.PORT || 5000))
+
+var MongoClient = mongodb.MongoClient;
+var url = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
+
 app.set('view engine', 'ejs');
 app.set('views','./views');
 
@@ -17,9 +22,15 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 
 
+
 app.get('/', function (req, res) {
     res.render('main');
 });
+
+app.get('/db', function (req, res) {
+    db.createCollection("ABC");
+});
+
 app.get('/register', function (req, res)
 {
     res.render('reg');
