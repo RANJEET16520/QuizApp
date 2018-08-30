@@ -39,6 +39,7 @@ var srl = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';
       }
    } }
 } );
+    db.contacts.insert( { name: "Amanda", status: "Updated" } );
 
     //Close connection
     db.close();
