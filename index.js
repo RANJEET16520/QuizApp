@@ -12,7 +12,7 @@ var mongoose = require('mongoose');
 var app = express();
 app.set('port', (process.env.PORT || 5000));
 
-const url = process.env.MONGODB_URI;
+const url = process.env.MONGOLAB_URI;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(url);
