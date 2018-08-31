@@ -1,7 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+
+
 
 var personSchema = mongoose.Schema({
     rollno:{type: String,
@@ -17,17 +19,19 @@ var personSchema = mongoose.Schema({
 });
 var Person = mongoose.model("Person", personSchema);
 
+/*let uri ='mongodb://shkamboj:qwerty123@localhost:27017/open_elec2?authSource=admin';*/
+let uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp'; 
 
 var app = express();
 app.set('port', (process.env.PORT || 5000));
 
-/*var uri ='mongodb://shkamboj:qwerty123@localhost:27017/open_elec1?authSource=admin';*/
 
-var uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';    
-//(Focus on This Variable)
+mongoose.connect(uri);
 
-// Use connect method to connect to the Serve
-  mongoose.connect(uri);
+let db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+
 
 
 
