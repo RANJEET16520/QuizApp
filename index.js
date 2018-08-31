@@ -15,26 +15,15 @@ var personSchema = mongoose.Schema({
       required: true
     }
 });
-var Children= mongoose.model("Children", childrenSchema);
-
-var childrenSchema = mongoose.Schema({
-    rollno:{type: String,
-      required: true,
-      unique: true
-    },
-    email:{type:String,
-      required :true,
-      unique: true}
-  });
-var Children = mongoose.model("Children", childrenSchema);
+var Person = mongoose.model("Person", personSchema);
 
 
 var app = express();
 app.set('port', (process.env.PORT || 5000));
 
-/*var uri ='mongodb://shkamboj:qwerty123@localhost:27017/open_elec1?authSource=admin';*/ 
+/*var uri ='mongodb://shkamboj:qwerty123@localhost:27017/open_elec1?authSource=admin';*/
 
-var uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';   
+var uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';    
 //(Focus on This Variable)
 
 // Use connect method to connect to the Serve
@@ -91,30 +80,6 @@ app.post('/signup',function (req,res) {
       console.log(res);
   });
 });
-
-app.get('/signup',function(req,res){
-   res.render('sign');
-});
-
-
-app.post('/sign',function (req,res) {
-  var rollno = req.body.rollno;
-  var email = req.body.email;
-  var children = new Children({
-    rollno : rollno,
-    email : email,
-  });
-  console.log(children);
-  person.save(function (err) {
-    if(err)
-    {
-      console.log("error");
-    }
-    else
-      console.log(res);
-  });
-});
-
 
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
