@@ -1,22 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
-var mongoose = require('mongoose');  
-
-
-
-
-/*let uri ='mongodb://shkamboj:qwerty123@localhost:27017/open_elec2?authSource=admin';*/
-
-
-var app = express();
-app.set('port', (process.env.PORT || 5000));
-
-const url = process.env.MONGOLAB_URI;
-
-mongoose.Promise = global.Promise;
-mongoose.connect(url);
-
+var mongoose = require('mongoose');
 
 var personSchema = mongoose.Schema({
     rollno:{type: String,
@@ -31,6 +16,34 @@ var personSchema = mongoose.Schema({
     }
 });
 var Person = mongoose.model("Person", personSchema);
+
+
+var abcSchema = mongoose.Schema({
+    a:{type: String,
+      required: true,
+      unique: true
+    },
+    b:{type:String,
+      required :true,
+      unique: true},
+    c:{type: String,
+      required: true
+    }
+});
+var Abc = mongoose.model("Abc", abcSchema);
+
+
+var app = express();
+app.set('port', (process.env.PORT || 5000));
+
+/*var uri ='mongodb://shkamboj:qwerty123@localhost:27017/open_elec1?authSource=admin';*/ 
+
+var uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';   
+//(Focus on This Variable)
+
+// Use connect method to connect to the Serve
+  mongoose.connect(uri);
+
 
 
 
@@ -74,6 +87,30 @@ app.post('/signup',function (req,res) {
   });
   console.log(person);
   person.save(function (err) {
+    if(err)
+    {
+      console.log("error");
+    }
+    else
+      console.log(res);
+  });
+});
+
+app.get('/sign',function(req,res){
+   res.render('sign');
+});
+
+app.post('/sign',function (req,res) {
+  var a = req.body.a;
+  var b = req.body.b;
+  var c = req.body.c;
+  var abc = new Abc({
+    a : a,
+    b : b,
+    c : c,
+  });
+  console.log(abc);
+  abc.save(function (err) {
     if(err)
     {
       console.log("error");
