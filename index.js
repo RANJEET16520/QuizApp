@@ -1,8 +1,21 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');  
 
+
+
+
+/*let uri ='mongodb://shkamboj:qwerty123@localhost:27017/open_elec2?authSource=admin';*/
+
+
+var app = express();
+app.set('port', (process.env.PORT || 5000));
+
+const url = process.env.MONGODB_URI;
+
+mongoose.Promise = global.Promise;
+mongoose.connect(url);
 
 
 var personSchema = mongoose.Schema({
@@ -18,21 +31,6 @@ var personSchema = mongoose.Schema({
     }
 });
 var Person = mongoose.model("Person", personSchema);
-
-/*let uri ='mongodb://shkamboj:qwerty123@localhost:27017/open_elec2?authSource=admin';*/
-let uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp'; 
-
-var app = express();
-app.set('port', (process.env.PORT || 5000));
-
-
-mongoose.connect(uri);
-
-let db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'connection error:'));
-
-
 
 
 
