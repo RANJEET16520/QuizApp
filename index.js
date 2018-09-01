@@ -36,13 +36,12 @@ var Abc = mongoose.model("Abc", abcSchema);
 var app = express();
 app.set('port', (process.env.PORT || 5000));
 
-/*var uri ='mongodb://shkamboj:qwerty123@localhost:27017/open_elec1?authSource=admin';*/ 
+// var uri ='mongodb://shkamboj:qwerty123@localhost:27017/open_elec16?authSource=admin'; 
 
-var uri = 'mongodb://shkamboj:qwerty@123@ds237072.mlab.com:37072/quizapp';   
-//(Focus on This Variable)
+var uri = 'mongodb://amit:amit123@ds237072.mlab.com:37072/quizapp';
 
-// Use connect method to connect to the Serve
-  mongoose.connect(uri);
+ 
+mongoose.connect(uri);
 
 
 
