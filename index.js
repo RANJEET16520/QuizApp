@@ -4,6 +4,7 @@ var request = require('request');
 var mongoose = require('mongoose');
 const fs = require('fs');
 var passwordHash = require('password-hash');
+var alert = require('alert-node');
 
 
 
@@ -101,33 +102,13 @@ app.post('/signup',function (req,res) {
       console.log("ERRONN");
     }
     else
-      console.log(res);
-  });
-});
-
-app.get('/sign',function(req,res){
-   res.render('sign');
-});
-
-app.post('/sign',function (req,res) {
-  var a = req.body.a;
-  var b = req.body.b;
-  var c = req.body.c;
-  var abc = new Abc({
-    a : a,
-    b : b,
-    c : c,
-  });
-  console.log(abc);
-  abc.save(function (err) {
-    if(err)
     {
-      console.log("error");
+      alert('Successfully Registered.');
+      res.redirect('/');
     }
-    else
-      console.log(res);
   });
 });
+
 
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))

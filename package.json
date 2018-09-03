@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/shkamboj/Team_EXE_QUIZ_WEB#readme",
   "dependencies": {
+    "alert-node": "^1.2.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.3",
