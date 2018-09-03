@@ -2,8 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
 var mongoose = require('mongoose');
-var bcrypt = require('bcryptjs');
 const fs = require('fs');
+var passwordHash = require('password-hash');
 
 
 
@@ -79,21 +79,26 @@ app.get('/signup',function(req,res){
 });
 
 
+
+
+    
+
+     
 app.post('/signup',function (req,res) {
   var rollno = req.body.rollno;
   var email = req.body.email;
   var password = req.body.password;
-
+  var hashedPassword = passwordHash.generate(password);
+  console.log(hashedPassword);
   var person = new Person({
     rollno : rollno,
     email : email,
-    password : password,
+    password : hashedPassword,
   });
-  console.log(person);
   person.save(function (err) {
     if(err)
     {
-      console.log("error");
+      console.log("ERRONN");
     }
     else
       console.log(res);
