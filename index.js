@@ -113,26 +113,19 @@ app.post('/fagnum', function(req,res){
     date : date,
   });
 
-  doc = new PDF();
-// doc.pipe(fs.createWriteStream('abc.pdf'));
+  const doc = new PDF();
+  let filename = fullname;
+  filename = encodeURIComponent(filename)+'.pdf';
 
-
-res.setHeader('Content-disposition', 'attachment; filename=' + fullname);
-  res.setHeader('Content-type', 'application/pdf')
-  const content = req.body.pdfx;
+  res.setHeader('Content-disposition', 'attachment; filename="' + filename + '"');
+  res.setHeader('Content-type', 'application/pdf');
+  const content ="Billing of your order "+"\n"+"Name: "+ pdfx.fullname +"\n"+ "Bill By: "+pdfx.billby +"\n"+"Bill To: " + pdfx.billto +"\n"+ "Date: "+pdfx.date;
   doc.y = 300;
+
   doc.text(content, 50, 50);
   doc.pipe(res);
-doc.end();
-
-
-/*var firstName = "xx";
-var lastName  = "xy";
-var phone     = "xz";
-var adress    = "x1";
-var obj = "firstName":firstName, "lastName":lastName, "phone":phone, "address":adress;
-console.log(obj);*/
-  pdfx.save(function (err) {
+  doc.end();
+  pdfx.save(function (err){
     if(err)
     {
       console.log("ERRONN");
