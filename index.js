@@ -7,10 +7,8 @@ var passwordHash = require('password-hash');
 var alert = require('alert-node');
 var pdf = require('express-pdf');
 var PDF = require('pdfkit'); 
+var mailer = require('express-mailer');
 const router = express.Router();
-
-
-
 
 var personSchema = mongoose.Schema({
     rollno:{type: String,
@@ -131,7 +129,7 @@ app.post('/fagnum', function(req,res){
       console.log("ERRONN");
     }
   });
-})
+});
 
 
 
@@ -172,6 +170,16 @@ app.post('/signup',function (req,res) {
 app.get('/pdf',function(req,res){
    res.send('PDF');
 });
+
+
+app.get('/viewdata',(req , res) =>{
+    Person.find().exec(function(err , i){
+        if (err) return console.log(err);
+
+        res.render('viewdata',{Person: i});
+     })
+ });
+ 
 
 
 
