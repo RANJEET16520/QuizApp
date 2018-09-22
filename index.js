@@ -162,7 +162,7 @@ app.post('/signup',function (req,res) {
     else
     {
       alert('Successfully Registered.');
-      res.redirect('/');
+      res.redirect('/login');
     }
   });
 });
