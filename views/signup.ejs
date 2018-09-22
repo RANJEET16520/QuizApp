@@ -21,7 +21,7 @@
   </header>
 
   <section class="body">
-    <form class="signup-form" action="/signup" name="form" method="POST" onsubmit="return validateForm()" >
+    <form class="signup-form" action="/signup" name="form" method="POST">
       <input type="text" name="rollno" placeholder="Roll No" required="required" />
       <input type="email" name="email" placeholder="Email" required=" required" />
       <div class="password-container">
@@ -32,8 +32,14 @@
 
     </form>
 
+    <br>
+    <br>
+    <br>
+<span class="got-account"><a href="login" method = "GET">I already have an account</a>
+  <br>
+  <br>
     <small class="terms-agreement">By signing up to this service, you are indicating that you have read and agreed to the <a href="#">Terms of service</a></small>
-    <span class="got-account"><a href="" method = "GET">I already have an account</a></span>
+    </span>
 
   </section>
 
@@ -41,3 +47,5 @@
 
 </body>
 </html>
+
+

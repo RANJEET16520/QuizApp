@@ -179,6 +179,35 @@ app.get('/viewdata',(req , res) =>{
         res.render('viewdata',{Person: i});
      })
  });
+
+app.get('/login',function(req,res){
+   res.render('login');
+});
+
+
+app.post('/login',function (req,res) {
+  var rollno = req.body.rollno;
+  var email = req.body.email;
+  var password = req.body.password;
+  Person.find({"rollno" : rollno },function(err,res1){
+    HP = res1[0].password;
+    console.log(HP);
+      console.log( passwordHash.verify(password, HP));
+         if(res1.length>0 && passwordHash.verify(password,HP))
+         {
+            res.redirect('/');
+         }
+         else
+         {
+            alert('Wrong Details');
+            res.redirect('login');
+         }
+          
+});
+});
+
+
+
  
 
 
