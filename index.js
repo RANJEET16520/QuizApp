@@ -11,6 +11,7 @@ var mailer = require('express-mailer');
 const router = express.Router();
 
 var personSchema = mongoose.Schema({
+    
     rollno:{type: String,
       required: true,
       unique: true
@@ -23,6 +24,27 @@ var personSchema = mongoose.Schema({
     }
 });
 var Person = mongoose.model("Person", personSchema);
+
+
+
+var facultySchema = mongoose.Schema({
+  fname:{type: String,
+      required: true,
+    },
+    teach_id:{type: String,
+      required: true,
+      unique: true
+    },
+    email:{type:String,
+      required :true,
+      unique: true},
+    password:{type: String,
+      required: true
+    }
+});
+var Faculty = mongoose.model("Faculty", facultySchema);
+
+
 
 
 var abcSchema = mongoose.Schema({
@@ -132,7 +154,63 @@ app.post('/fagnum', function(req,res){
 });
 
 
+app.get('/fac_signup',function(req, res){
+  res.render('fac_signup');
+})
 
+
+app.post('/fac_signup',function (req,res) {
+  var fname = req.body.fname;
+  var teach_id = req.body.teach_id;
+  var email = req.body.email;
+  var password = req.body.password;
+  var hashedPassword = passwordHash.generate(password);
+  console.log(hashedPassword);
+  var faculty = new Faculty({
+    fname : fname,
+    teach_id : teach_id,
+    email : email,
+    password : hashedPassword,
+  });
+  faculty.save(function (err) {
+    if(err)
+    {
+      console.log("ERRONN");
+    }
+    else
+    {
+      alert('Successfully Registered.');
+    }
+  });
+});
+
+
+
+app.get('/fac_login',function(req,res){
+   res.render('fac_login');
+});
+
+
+app.post('/fac_login',function (req,res) {
+  var teach_id = req.body.teach_id;
+  var password = req.body.password;
+  Faculty.find({"teach_id" : teach_id },function(err,res2){
+    console.log(res2.length);
+    HP = res2[0].password;
+    console.log(HP);
+      console.log( passwordHash.verify(password, HP));
+         if(res2.length>0 && passwordHash.verify(password,HP))
+         {
+            console.log('OK');
+            res.redirect('/');
+         }
+         else
+         {
+            alert('Wrong Details');
+         }
+          
+});
+});
 
 
 
@@ -140,6 +218,11 @@ app.post('/fagnum', function(req,res){
 app.get('/signup',function(req,res){
    res.render('signup');
 });
+
+
+
+
+
 
 
      
