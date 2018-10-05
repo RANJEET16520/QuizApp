@@ -43,6 +43,7 @@
     "js-datepicker": "^3.3.2",
     "mongodb": "^3.1.4",
     "mongoose": "^5.2.10",
+    "nodemailer": "^4.6.8",
     "passport": "^0.4.0",
     "passport-google-plus-token": "^2.1.0",
     "passport-http": "^0.3.0",

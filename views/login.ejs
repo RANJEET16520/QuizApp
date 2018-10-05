@@ -2,23 +2,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet"  href="/static/login.css">
+    <link rel="stylesheet"  href="/static/signup.css">
 </head>
 <body>
-    <div id="overlay"></div>
-    <div class="loginbox">
-        <h1>LOGIN</h1><br>
+        <h1 align="center" class="prompt">LOGIN</h1>
+        <div class="login-page">
+        <div class="form">
         <form action="/login" method="POST">
             <input type="text" name = "rollno" placeholder="Roll No." required="required"><br>
             <input type="password" name = "password" placeholder="Password" required="required">
-            <input type="submit" value="LOGIN">
-        </form>
-        <br>
-        <br>
-        <a href="/login_page/change_password" method ="GET" >Forgot Password?</a><br>
-        <br>
-        <br>
-        <a href="/signup" method ="GET" >Don't have an account Sign Up</a><br>
-    </div>
+            <button>Login</button>
+        
+        <p class="message">Forgot Password?<a href="/login_page/change_password"> Reset</a></p>
+        <p  class="message">Don't have an account<a href="/signup"> Sign Up</a></p>
+</form>
 </body>
 </html>

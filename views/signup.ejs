@@ -1,41 +1,33 @@
 <!Doctype html>
 <html>
 <head>
+  <link rel="stylesheet" href="/static/signup.css">
 </head>
 <body>
 
 
 <main>
   <header class="prompt">
-    <h1>Create an account</h1>
+    <h1 align="center">Create Account</h1>
   </header>
 
-  <section class="body">
+  <div class="login-page">
+  <div class="form">
     <form class="signup-form" action="/signup" name="form" method="POST">
       <input type="text" name="rollno" placeholder="Roll No" required="required" />
       <input type="email" name="email" placeholder="Email" required=" required" />
-      <div class="password-container">
         <input type="password" name="password" placeholder="Password" required="required" />
-      </div>
 
-      <button class="submit-button">Sign up</button>
+      <button>Create Account</button>
 
     </form>
 
-    <br>
-    <br>
-    <br>
-<span class="got-account"><a href="login" method = "GET">I already have an account</a>
-  <br>
-  <br>
-    <small class="terms-agreement">By signing up to this service, you are indicating that you have read and agreed to the <a href="#">Terms of service</a></small>
-    </span>
 
-  </section>
+  <p class="message">Already Registered? <a href="/login">Login</a></p>
+
+
 
 </main>
 
 </body>
 </html>
-
-

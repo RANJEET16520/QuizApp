@@ -11,6 +11,11 @@ var PDF = require('pdfkit');
 var mailer = require('express-mailer');
 var session = require('express-session');
 var cookieSession = require('cookie-session');
+const nodemailer = require('nodemailer');
+var mailer = require('express-mailer');
+
+
+
 const router = express.Router();
 
 
@@ -48,8 +53,6 @@ var facultySchema = mongoose.Schema({
     }
 });
 var Faculty = mongoose.model("Faculty", facultySchema);
-
-
 
 
 var abcSchema = mongoose.Schema({
@@ -124,6 +127,20 @@ app.use(cookieSession({
 app.set("view options", { layout: false } );
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
+
+
+
+mailer.extend(app, {
+  from: 'uditgulati0@gmail.com',
+  host: 'smtp.gmail.com', // hostname
+  secureConnection: true, // use SSL
+  port: 465, // port for secure SMTP
+  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+  auth: {
+    user: 'iiitu16118@gmail.com',
+    pass: 'PAPAmummy@143'
+  }
+});
 
 
 
@@ -333,28 +350,54 @@ app.get('/quiz',function(req,res){
    
 });
 
-// app.post('/quiz',function(req,res){
-//    var noq = req.body.noq;
-//    if(noq = '10')
-//    {
-//       res.render('ten');
-//    }
-//    else
-//    {
-//     res.render('twenty');
-//    }
-// });
+
+app.post('/quiz',function(req, res){
+    if(req.body.noq==10)
+    res.redirect('/dash1');
+  else
+    res.redirect('/dash2');
+})
+
+app.get('/dash1',function(req,res){
+  res.render('ten');
+});
+
+
+app.get('/dash2',function(req,res){
+  res.render('twenty');
+});
 
 
 app.get('/logout', function (req, res) {
   delete req.session.uid;
   res.redirect('/fac_login');
-});  
+});
 
 
 
+app.get('/email', function (req, res, next) {
+  app.mailer.send('email', {
+    to: 'trinitydublin376@gmail.com', // REQUIRED. This can be a comma delimited string just like a normal email to field. 
+    subject: 'Test Email', // REQUIRED.
+    otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
+  }, function (err) {
+    if (err) {
+      // handle error
+      console.log(err);
+      res.send('There was an error sending the email');
+      return;
+    }
+    res.send('Email Sent');
+  });
+});
 
 
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'));
-})
+});
+
+
+
+
+
+ 
