@@ -3,12 +3,17 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var mongoose = require('mongoose');
 const fs = require('fs');
+var cookieParser = require('cookie-parser');
 var passwordHash = require('password-hash');
 var alert = require('alert-node');
 var pdf = require('express-pdf');
 var PDF = require('pdfkit'); 
 var mailer = require('express-mailer');
+var session = require('express-session');
+var cookieSession = require('cookie-session');
 const router = express.Router();
+
+
 
 var personSchema = mongoose.Schema({
     
@@ -100,11 +105,38 @@ app.use('/static',express.static(__dirname + '/public'));
 
 const url = require('url');
 
+app.use(cookieParser());
+
+
+
+
+ 
+app.use(cookieSession({
+  name: 'session',
+  keys: ['poiuytrewq'],
+ 
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
+
+
+
 app.set("view options", { layout: false } );
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 
 
+
+
+app.get('/xyz', function(req, res){
+   if(req.session.page_views){
+      req.session.page_views++;
+      res.send("You visited this page " + req.session.page_views + " times");
+   } else {
+      req.session.page_views = 1;
+      res.send("Welcome to this page for the first time!");
+   }
+});
 
 app.get('/', function (req, res) {
     res.render('main');
@@ -202,7 +234,9 @@ app.post('/fac_login',function (req,res) {
          if(res2.length>0 && passwordHash.verify(password,HP))
          {
             console.log('OK');
-            res.redirect('/');
+            console.log(res2[0].teach_id);
+            req.session.uid = 'string';
+            res.redirect('/quiz');
          }
          else
          {
@@ -279,6 +313,7 @@ app.post('/login',function (req,res) {
          if(res1.length>0 && passwordHash.verify(password,HP))
          {
             res.redirect('/');
+
          }
          else
          {
@@ -289,12 +324,37 @@ app.post('/login',function (req,res) {
 });
 });
 
+app.get('/quiz',function(req,res){
+	
+	 if(req.session.uid)
+		res.render('quiz');
+  else
+    res.send("YOu are not logged in");
+   
+});
+
+// app.post('/quiz',function(req,res){
+//    var noq = req.body.noq;
+//    if(noq = '10')
+//    {
+//       res.render('ten');
+//    }
+//    else
+//    {
+//     res.render('twenty');
+//    }
+// });
 
 
- 
+app.get('/logout', function (req, res) {
+  delete req.session.uid;
+  res.redirect('/fac_login');
+});  
+
+
 
 
 
 app.listen(app.get('port'), function() {
-    console.log('running on port', app.get('port'))
+    console.log('running on port', app.get('port'));
 })
