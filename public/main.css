@@ -372,7 +372,6 @@ template {
 }
 
 nav {
-    text-transform: uppercase;
     width: 100%;
     display: none;
     font-weight: 600;
@@ -471,7 +470,6 @@ nav a:hover:before {
 }
 
 .menu-btn {
-    text-transform: uppercase;
     cursor: pointer;
     padding: 1em;
     font-size: 1.5em;
@@ -558,7 +556,6 @@ h1 {
 }
 
 .register-btn {
-    text-transform: uppercase;
     margin: 2em auto;
     width: 230px;
     display: block;
@@ -778,7 +775,6 @@ p,
 
 .main-speaker-info h3,
 .speaker-info h3 {
-    text-transform: uppercase
 }
 
 @media all and (min-width: 768px) {
@@ -1025,7 +1021,6 @@ p,
 }
 
 #agenda .agenda-subheading {
-    text-transform: uppercase;
     padding-bottom: 1em;
     max-width: 450px;
     font-weight: 600
@@ -1322,7 +1317,6 @@ p,
 }
 
 .become-sponsor-btn {
-    text-transform: uppercase;
     margin: 2em auto;
     padding: 1.5em;
     text-align: center;
@@ -1349,7 +1343,6 @@ footer {
 .footer-title {
     font-family: Allerta, sans-serif;
     font-size: 3.2em;
-    text-transform: uppercase;
 }
 
 .social-icon-container {
@@ -1384,7 +1377,6 @@ footer {
 }
 
 .register-today-btn {
-    text-transform: uppercase;
     margin: 2em auto;
     padding: 1.5em;
     text-align: center;

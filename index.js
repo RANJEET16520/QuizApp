@@ -11,13 +11,12 @@ var PDF = require('pdfkit');
 var mailer = require('express-mailer');
 var session = require('express-session');
 var cookieSession = require('cookie-session');
-const nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer');
 var mailer = require('express-mailer');
-
+var randomUrl = require('random-url');
 
 
 const router = express.Router();
-
 
 
 var personSchema = mongoose.Schema({
@@ -130,8 +129,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
 
+
+
 mailer.extend(app, {
-  from: 'uditgulati0@gmail.com',
+  from: 'iiitu16118@gmail.com',
   host: 'smtp.gmail.com', // hostname
   secureConnection: true, // use SSL
   port: 465, // port for secure SMTP
@@ -375,29 +376,68 @@ app.get('/logout', function (req, res) {
 
 
 
-app.get('/email', function (req, res, next) {
-  app.mailer.send('email', {
-    to: 'trinitydublin376@gmail.com', // REQUIRED. This can be a comma delimited string just like a normal email to field. 
-    subject: 'Test Email', // REQUIRED.
-    otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
-  }, function (err) {
-    if (err) {
-      // handle error
-      console.log(err);
-      res.send('There was an error sending the email');
-      return;
-    }
-    res.send('Email Sent');
-  });
+// app.post('/forgot_password', function (req, res, next) {
+//   var email1 = randomUrl('https');
+//   console.log(email1);
+//   app.mailer.send('email', {
+//     to: req.body.email,
+//     subject: 'Test Email',
+//     otherProperty: 'Other Property'
+//   }, function (err) {
+//     if (err) {
+//       console.log(err);
+//       res.send('There was an error sending the email');
+//       return;
+//     }
+//     res.send('Email Sent');
+//   });
+// });
+
+app.get('/forgot_password',function(req, res){
+  res.render('forgot_password');
+});
+
+
+
+
+var text = 'please click on the link to change password: \n\n' + randomUrl('https');
+
+
+app.post('/forgot_password',function(req, res){
+  nodemailer.createTestAccount((err, account) => {
+    let transporter = nodemailer.createTransport({
+
+
+       from: 'iiitu16118@gmail.com',
+  host: 'smtp.gmail.com',
+  secureConnection: true,
+  port: 465,
+  transportMethod: 'SMTP',
+  auth: {
+    user: 'iiitu16118@gmail.com',
+    pass: 'PAPAmummy@143'
+  }
+    });
+
+    let mailOptions = {
+        from: 'iiitu16118@gmail.com',
+        to: req.body.email,
+        subject: 'Reset Password',
+        text: text
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        else
+        {
+          res.send("Check your email");
+        }
+    });
+});
 });
 
 
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'));
 });
-
-
-
-
-
- 
