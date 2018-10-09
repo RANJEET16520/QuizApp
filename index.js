@@ -14,8 +14,14 @@ var cookieSession = require('cookie-session');
 var nodemailer = require('nodemailer');
 var mailer = require('express-mailer');
 var randomUrl = require('random-url');
+var async = require('async');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var bcrypt = require('bcrypt-nodejs');
+var crypto = require('crypto');
 
 
+var count=1;
 const router = express.Router();
 
 
@@ -33,6 +39,9 @@ var personSchema = mongoose.Schema({
     }
 });
 var Person = mongoose.model("Person", personSchema);
+
+
+
 
 
 
@@ -83,6 +92,21 @@ var pdfSchema = mongoose.Schema({
     }
 });
 var Pdf = mongoose.model("Pdf", pdfSchema);
+
+
+var linkSchema = mongoose.Schema({
+  link:{type: String,
+      required: true,
+      unique: true
+    },
+    count:{type: Number,
+      unique: true}
+});
+var Link = mongoose.model("Link", linkSchema);
+
+
+
+
 
 
 
@@ -325,13 +349,10 @@ app.post('/login',function (req,res) {
   var email = req.body.email;
   var password = req.body.password;
   Person.find({"rollno" : rollno },function(err,res1){
-    HP = res1[0].password;
-    console.log(HP);
-      console.log( passwordHash.verify(password, HP));
-         if(res1.length>0 && passwordHash.verify(password,HP))
+      // console.log( passwordHash.verify(password, res1[0].password));
+         if(res1.length>0 && passwordHash.verify(password, res1[0].password))
          {
             res.redirect('/');
-
          }
          else
          {
@@ -400,7 +421,6 @@ app.get('/forgot_password',function(req, res){
 
 
 
-var text = 'please click on the link to change password: \n\n' + randomUrl('https');
 
 
 app.post('/forgot_password',function(req, res){
@@ -419,6 +439,10 @@ app.post('/forgot_password',function(req, res){
   }
     });
 
+    var mrl = randomUrl('https');
+
+var text = 'please click on the link to change password: \n\n' + mrl;
+
     let mailOptions = {
         from: 'iiitu16118@gmail.com',
         to: req.body.email,
@@ -429,13 +453,36 @@ app.post('/forgot_password',function(req, res){
         if (error) {
             return console.log(error);
         }
-        else
-        {
-          res.send("Check your email");
-        }
+    else
+    {
+    var link = new Link({
+    link: mrl,
+    count: count
+    });
+    link.save(function (err) {
+    if(err)
+    {
+      console.log(err);
+    }
+    else
+    {
+      count=count+1;
+      alert('Please Check Your Email');
+      res.redirect('/mailsent');
+    }
+  });
+  }
     });
 });
 });
+
+
+app.get('/mailsent',function(req, res){
+  res.render('mailsent');
+});
+
+
+
 
 
 app.listen(app.get('port'), function() {
