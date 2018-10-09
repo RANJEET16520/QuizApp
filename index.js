@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var mongoose = require('mongoose');
 const fs = require('fs');
+var JSAlert = require("js-alert");
 var cookieParser = require('cookie-parser');
 var passwordHash = require('password-hash');
 var alert = require('alert-node');
@@ -269,11 +270,11 @@ app.post('/fac_login',function (req,res) {
   var teach_id = req.body.teach_id;
   var password = req.body.password;
   Faculty.find({"teach_id" : teach_id },function(err,res2){
-    console.log(res2.length);
-    HP = res2[0].password;
-    console.log(HP);
-      console.log( passwordHash.verify(password, HP));
-         if(res2.length>0 && passwordHash.verify(password,HP))
+    // console.log(res2.length);
+    // HP = res2[0].password;
+    // console.log(HP);
+    //   console.log( passwordHash.verify(password, res2[0].password));
+         if(res2.length>0 && passwordHash.verify(password,res2[0].password))
          {
             console.log('OK');
             console.log(res2[0].teach_id);
@@ -282,7 +283,8 @@ app.post('/fac_login',function (req,res) {
          }
          else
          {
-            alert('Wrong Details');
+            JSAlert.alert("Wrong Details");
+            res.redirect('/fac_login');
          }
           
 });
