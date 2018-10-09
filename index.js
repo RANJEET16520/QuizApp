@@ -101,7 +101,10 @@ var linkSchema = mongoose.Schema({
       unique: true
     },
     count:{type: Number,
-      unique: true}
+      unique: true,
+      startAt: 1,
+    incrementBy: 1
+  	}
 });
 var Link = mongoose.model("Link", linkSchema);
 
@@ -283,7 +286,7 @@ app.post('/fac_login',function (req,res) {
          }
          else
          {
-            JSAlert.alert("Wrong Details");
+            alert('Wrong Details');
             res.redirect('/fac_login');
          }
           
@@ -461,14 +464,13 @@ var text = 'please click on the link to change password: \n\n' + mrl;
     link: mrl,
     count: count
     });
-    link.save(function (err) {
+    link.save(function (err){
     if(err)
     {
       console.log(err);
     }
     else
     {
-      count=count+1;
       alert('Please Check Your Email');
       res.redirect('/mailsent');
     }
