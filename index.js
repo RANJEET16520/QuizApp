@@ -69,6 +69,10 @@ var quizqSchema = mongoose.Schema({
       type: String,
       required: true,
       unique: true
+    },
+    anss:{
+      type: String,
+      required: true
     }
 });
 
@@ -142,7 +146,16 @@ var Link = mongoose.model("Link", linkSchema);
 
 
 
-
+var createSchema = mongoose.Schema({
+  noq:{type: String,
+      required: true,
+    },
+    quiz_name:{type: String,
+      required: true,
+      unique: true
+    }
+});
+var Create = mongoose.model("Create", createSchema);
 
 
 
@@ -377,8 +390,11 @@ app.get('/viewdata',(req , res) =>{
  });
 
 
+
+
+
 app.get('/exam',(req , res) =>{
-    Quizq.find().exec(function(err , i){
+    Quizq.aggregate([{ $sample: { size: 2} }]).exec(function(err , i){
         if (err) return console.log(err);
 
         res.render('exam',{Quizq: i});
@@ -436,12 +452,14 @@ app.post('/ten',function (req,res) {
   var q12= req.body.q12;
   var q13 = req.body.q13;
   var q14 = req.body.q14;
+  var anss = req.body.anss;
   var quizq = new Quizq({
     q1 : q1,
     q11 : q11,
     q12 : q12,
     q13 : q13,
     q14 : q14,
+    anss : anss
   });
 
   quizq.save();
@@ -546,6 +564,30 @@ app.get('/mailsent',function(req, res){
 });
 
 
+app.get('/createquiz',(req , res) =>{
+    Create.find().exec(function(err , i){
+        if (err) return console.log(err);
+
+        res.render('createquiz',{Create: i});
+     })
+ });
+
+
+
+
+
+app.post('/createquiz',function (req,res) {
+  var noq = req.body.noq;
+  var quiz_name = req.body.quiz_name;
+  var create = new Create({
+    noq : noq,
+    quiz_name : quiz_name
+  });
+
+  create.save();
+
+
+});
 
 
 
