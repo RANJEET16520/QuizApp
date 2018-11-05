@@ -20,6 +20,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
+var passportfb = require('passport-facebook');
 
 
 var count=1;
@@ -41,6 +42,37 @@ var personSchema = mongoose.Schema({
 });
 var Person = mongoose.model("Person", personSchema);
 
+
+
+var quizqSchema = mongoose.Schema({
+    q1:{
+      type: String,
+      required: true,
+      unique: true
+    },
+    q11:{
+      type: String,
+      required: true,
+      unique: true
+    },
+    q12:{
+      type: String,
+      required: true,
+      unique: true
+    },
+    q13:{
+      type: String,
+      required: true,
+      unique: true
+    },
+    q14:{
+      type: String,
+      required: true,
+      unique: true
+    }
+});
+
+var Quizq = mongoose.model("Quizq", quizqSchema);
 
 
 
@@ -344,6 +376,15 @@ app.get('/viewdata',(req , res) =>{
      })
  });
 
+
+app.get('/exam',(req , res) =>{
+    Quizq.find().exec(function(err , i){
+        if (err) return console.log(err);
+
+        res.render('exam',{Quizq: i});
+     })
+ });
+
 app.get('/login',function(req,res){
    res.render('login');
 });
@@ -379,14 +420,33 @@ app.get('/quiz',function(req,res){
 
 
 app.post('/quiz',function(req, res){
-    if(req.body.noq==10)
-    res.redirect('/dash1');
+    if(req.body.noq=="DBMS")
+    res.redirect('/ten');
   else
     res.redirect('/dash2');
 })
 
-app.get('/dash1',function(req,res){
+app.get('/ten',function(req,res){
   res.render('ten');
+});
+
+app.post('/ten',function (req,res) {
+  var q1 = req.body.q1;
+  var q11 = req.body.q11;
+  var q12= req.body.q12;
+  var q13 = req.body.q13;
+  var q14 = req.body.q14;
+  var quizq = new Quizq({
+    q1 : q1,
+    q11 : q11,
+    q12 : q12,
+    q13 : q13,
+    q14 : q14,
+  });
+
+  quizq.save();
+  res.redirect('ten');
+
 });
 
 
