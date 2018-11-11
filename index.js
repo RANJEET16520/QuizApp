@@ -6,6 +6,8 @@ const fs = require('fs');
 var JSAlert = require("js-alert");
 var cookieParser = require('cookie-parser');
 var passwordHash = require('password-hash');
+var flash    = require('connect-flash');
+var morgan = require('morgan');
 var alert = require('alert-node');
 var pdf = require('express-pdf');
 var PDF = require('pdfkit'); 
@@ -21,6 +23,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var passportfb = require('passport-facebook');
+
 
 
 var count=1;
@@ -170,6 +173,13 @@ var uri = 'mongodb://amit:amit123@ds237072.mlab.com:37072/quizapp';
 mongoose.connect(uri);
 
 
+require('./config/passport')(passport);
+
+
+
+
+
+
 
 
 app.set('view engine', 'ejs');
@@ -180,6 +190,8 @@ app.use('/static',express.static(__dirname + '/public'));
 
 const url = require('url');
 
+
+app.use(morgan('dev'));
 app.use(cookieParser());
 
 
@@ -193,6 +205,11 @@ app.use(cookieSession({
   // Cookie Options
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 
 
@@ -232,6 +249,54 @@ app.get('/xyz', function(req, res){
 app.get('/', function (req, res) {
     res.render('main');
 });
+
+
+
+app.get('/practice', function (req, res) {
+    res.render('practice');
+});
+
+
+app.get('/profile', function (req, res) {
+    res.send('HI THERE');
+});
+
+app.get('/auth/facebook', passport.authenticate('facebook', { scope : ['public_profile', 'email'] }));
+
+        // handle the callback after facebook has authenticated the user
+        app.get('/auth/facebook/callback',
+            passport.authenticate('facebook', {
+                successRedirect : '/profile',
+                failureRedirect : '/'
+            }));
+
+
+            app.get('/connect/facebook', passport.authorize('facebook', { scope : ['public_profile', 'email'] }));
+
+        // handle the callback after facebook has authorized the user
+        app.get('/connect/facebook/callback',
+            passport.authorize('facebook', {
+                successRedirect : '/profile',
+                failureRedirect : '/'
+            }));
+
+
+
+   app.get('/unlink/facebook', isLoggedIn, function(req, res) {
+        var user            = req.user;
+        user.facebook.token = undefined;
+        user.save(function(err) {
+            res.redirect('/profile');
+        });
+    });
+
+
+   function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+
+    res.redirect('/');
+}
 
 
 app.get('/register', function (req, res)
