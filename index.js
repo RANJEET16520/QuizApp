@@ -584,7 +584,7 @@ app.post('/login',function (req,res) {
 app.get('/quiz1',function(req,res){
 	
 	 if(req.session.uid)
-		res.render('quiz');
+		res.render('quiz1');
   else
     res.send("YOu are not logged in");
    
