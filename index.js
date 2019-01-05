@@ -262,7 +262,7 @@ app.get('/qu', function(req, res) {
   console.log(list);
 
   // load the index.html template
-  fs.readFile(__dirname + '/public/index.html', function(err, data) {
+  fs.readFile(__dirname + '/views/index.ejs', function(err, data) {
     if(err) throw err;
 
     // populate it with templated questions from the node-quizzer module
@@ -275,7 +275,7 @@ app.get('/quiz', function(req, res) {
   var quiz = getQuiz('generate', req);
 
   // load the quiz.html template
-  fs.readFile(__dirname + '/public/quiz.html', function(err, data) {
+  fs.readFile(__dirname + '/views/quiz.ejs', function(err, data) {
     if(err) throw err;
 
     // populate it with templated questions from the node-quizzer module
@@ -297,7 +297,7 @@ app.get('/quiz/:id', function(req, res) {
 
   // load the quiz.html template
   if(quiz) {
-    fs.readFile(__dirname + '/public/quiz.html', function(err, data) {
+    fs.readFile(__dirname + '/views/quiz.ejs', function(err, data) {
       if(err) throw err;
 
       // populate it with templated questions from the node-quizzer module
