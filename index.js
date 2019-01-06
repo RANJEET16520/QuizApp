@@ -22,7 +22,6 @@ var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var passportfb = require('passport-facebook');
 var quizzer = require('node-quizzer');
-var _ = require('underscore-node');
 
 var count=1;
 const router = express.Router();
