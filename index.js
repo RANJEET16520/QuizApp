@@ -21,25 +21,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var passportfb = require('passport-facebook');
-var
-  quizzer = require('node-quizzer'),
-  _ = require('underscore-node'),
-  getQuiz = function(method, req) {
-    var urlParts = url.parse(req.url, true),
-      query = urlParts.query,
 
-      // generate random quiz
-      quiz = quizzer[method]({
-        uname: query.fullname,
-        uemail: query.email,
-        name: query.quiz,
-        count: parseInt(query.count),
-        time: parseInt(query.time),
-        perc: parseInt(query.perc)
-      });
-
-    return quiz;
-  };
 
 var count=1;
 const router = express.Router();
@@ -236,6 +218,11 @@ mailer.extend(app, {
 
 
 
+app.get('/quizzer', function (req, res) {
+  delete req.session.uid;
+  res.redirect('https://quizzersh.herokuapp.com/');
+});
+
 
 app.get('/xyz', function(req, res){
    if(req.session.page_views){
@@ -298,6 +285,8 @@ app.post('/fagnum', function(req,res){
 app.get('/fac_signup',function(req, res){
   res.render('fac_signup');
 })
+
+
 
 
 app.post('/fac_signup',function (req,res) {
