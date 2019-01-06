@@ -173,7 +173,6 @@ var uri = 'mongodb://amit:amit123@ds237072.mlab.com:37072/quizapp';
 mongoose.connect(uri);
 
 
-require('./config/passport')(passport);
 
 
 
