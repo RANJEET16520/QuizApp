@@ -23,27 +23,6 @@ var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var passportfb = require('passport-facebook');
-var quizzer = require('node-quizzer');
-var  _ = require('underscore-node');
-
-
-
-// getQuiz = function(method, req){
-//     var urlParts = url.parse(req.url, true),
-//       query = urlParts.query,
-
-//       // generate random quiz
-//       quiz = quizzer[method]({
-//         uname: query.fullname,
-//         uemail: query.email,
-//         name: query.quiz,
-//         count: parseInt(query.count),
-//         time: parseInt(query.time),
-//         perc: parseInt(query.perc)
-//       });
-
-//     return quiz;
-//   };
 
 
 
@@ -64,7 +43,6 @@ var personSchema = mongoose.Schema({
       required: true
     }
 });
-
 var Person = mongoose.model("Person", personSchema);
 
 
@@ -165,7 +143,7 @@ var linkSchema = mongoose.Schema({
       unique: true,
       startAt: 1,
     incrementBy: 1
-  	}
+    }
 });
 var Link = mongoose.model("Link", linkSchema);
 
@@ -195,7 +173,7 @@ var uri = 'mongodb://amit:amit123@ds237072.mlab.com:37072/quizapp';
 mongoose.connect(uri);
 
 
-
+require('./config/passport')(passport);
 
 
 
@@ -212,6 +190,8 @@ app.use('/static',express.static(__dirname + '/public'));
 
 const url = require('url');
 
+
+app.use(morgan('dev'));
 app.use(cookieParser());
 
 
@@ -227,6 +207,9 @@ app.use(cookieSession({
 }));
 
 
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 
 
@@ -249,75 +232,6 @@ mailer.extend(app, {
     pass: 'PAPAmummy@143'
   }
 });
-
-// app.get('/quizzer', function(req, res) {
-//   var list = quizzer.getCategories();
-//   console.log(list);
-
-//   // load the index.html template
-//   fs.readFile(__dirname + '/public/index.html', function(err, data) {
-//     if(err) throw err;
-
-//     // populate it with templated questions from the node-quizzer module
-//     var compiled = _.template(data.toString());
-//     res.send(compiled({ availableQuizzes: list }));
-//   });
-// });
-
-// app.use(express.static(path.join(__dirname, 'public')));
-
-// app.get('/quiz', function(req, res) {
-//   var quiz = getQuiz('generate', req);
-
-//   // load the quiz.html template
-//   fs.readFile(__dirname + '/public/quiz.html', function(err, data) {
-//     if(err) throw err;
-
-//     // populate it with templated questions from the node-quizzer module
-//     var compiled = _.template(data.toString());
-//     res.send(compiled({ quiz: quiz }));
-//   });
-// });
-
-// app.get('/tokenize', function(req, res) {
-//   var quiz = getQuiz('tokenize', req),
-//     tokenUrl = req.protocol + '://' + req.get('host') + "/quiz/" + quiz.quid;
-
-//   res.set('Content-Type', 'text/plain');
-//   res.send(tokenUrl);
-// });
-
-// app.get('/quiz/:id', function(req, res) {
-//   var quiz = quizzer.fromToken(req.params.id);
-
-//   // load the quiz.html template
-//   if(quiz) {
-//     fs.readFile(__dirname + '/public/quiz.html', function(err, data) {
-//       if(err) throw err;
-
-//       // populate it with templated questions from the node-quizzer module
-//       var compiled = _.template(data.toString());
-//       res.send(compiled({ quiz: quiz }));
-//     });
-//   } else {
-//     res.send("This token has expired!");
-//   }
-// })
-
-// app.get('/review', function(req, res) {
-//   var urlParts = url.parse(req.url, true),
-//     query = urlParts.query,
-//     results = quizzer.evaluate(query);
-
-//   // load the review.html template
-//   fs.readFile(__dirname + '/public/review.html', function(err, data) {
-//     if(err) throw err;
-
-//     // populate it with templated questions from the node-quizzer module
-//     var compiled = _.template(data.toString());
-//     res.send(compiled({ results: results }));
-//   });
-// });
 
 
 
@@ -346,6 +260,43 @@ app.get('/practice', function (req, res) {
 app.get('/profile', function (req, res) {
     res.send('HI THERE');
 });
+
+app.get('/auth/facebook', passport.authenticate('facebook', { scope : ['public_profile', 'email'] }));
+
+        // handle the callback after facebook has authenticated the user
+        app.get('/auth/facebook/callback',
+            passport.authenticate('facebook', {
+                successRedirect : '/profile',
+                failureRedirect : '/'
+            }));
+
+
+            app.get('/connect/facebook', passport.authorize('facebook', { scope : ['public_profile', 'email'] }));
+
+        // handle the callback after facebook has authorized the user
+        app.get('/connect/facebook/callback',
+            passport.authorize('facebook', {
+                successRedirect : '/profile',
+                failureRedirect : '/'
+            }));
+
+
+
+   app.get('/unlink/facebook', isLoggedIn, function(req, res) {
+        var user            = req.user;
+        user.facebook.token = undefined;
+        user.save(function(err) {
+            res.redirect('/profile');
+        });
+    });
+
+
+   function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+
+    res.redirect('/');
+}
 
 
 app.get('/register', function (req, res)
@@ -539,17 +490,17 @@ app.post('/login',function (req,res) {
 });
 });
 
-app.get('/quiz1',function(req,res){
-	
-	 if(req.session.uid)
-		res.render('quiz1');
+app.get('/quiz',function(req,res){
+  
+   if(req.session.uid)
+    res.render('quiz');
   else
     res.send("YOu are not logged in");
    
 });
 
 
-app.post('/quiz1',function(req, res){
+app.post('/quiz',function(req, res){
     if(req.body.noq=="DBMS")
     res.redirect('/ten');
   else
