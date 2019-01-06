@@ -21,6 +21,25 @@ var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var passportfb = require('passport-facebook');
+var
+  quizzer = require('node-quizzer'),
+  _ = require('underscore-node'),
+  getQuiz = function(method, req) {
+    var urlParts = url.parse(req.url, true),
+      query = urlParts.query,
+
+      // generate random quiz
+      quiz = quizzer[method]({
+        uname: query.fullname,
+        uemail: query.email,
+        name: query.quiz,
+        count: parseInt(query.count),
+        time: parseInt(query.time),
+        perc: parseInt(query.perc)
+      });
+
+    return quiz;
+  };
 
 var count=1;
 const router = express.Router();
