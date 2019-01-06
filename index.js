@@ -65,7 +65,6 @@ var personSchema = mongoose.Schema({
     }
 });
 
-var x = 5;
 var Person = mongoose.model("Person", personSchema);
 
 
@@ -196,7 +195,7 @@ var uri = 'mongodb://amit:amit123@ds237072.mlab.com:37072/quizapp';
 mongoose.connect(uri);
 
 
-// require('./config/passport')(passport);
+
 
 
 
@@ -213,8 +212,6 @@ app.use('/static',express.static(__dirname + '/public'));
 
 const url = require('url');
 
-
-app.use(morgan('dev'));
 app.use(cookieParser());
 
 
@@ -230,9 +227,6 @@ app.use(cookieSession({
 }));
 
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
 
 
 
@@ -256,13 +250,12 @@ mailer.extend(app, {
   }
 });
 
-
-app.get('/qu', function(req, res) {
+app.get('/quizzer', function(req, res) {
   var list = quizzer.getCategories();
   console.log(list);
 
   // load the index.html template
-  fs.readFile(__dirname + '/views/index.ejs', function(err, data) {
+  fs.readFile(__dirname + '/public/index.html', function(err, data) {
     if(err) throw err;
 
     // populate it with templated questions from the node-quizzer module
@@ -271,11 +264,13 @@ app.get('/qu', function(req, res) {
   });
 });
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/quiz', function(req, res) {
   var quiz = getQuiz('generate', req);
 
   // load the quiz.html template
-  fs.readFile(__dirname + '/views/quiz.ejs', function(err, data) {
+  fs.readFile(__dirname + '/public/quiz.html', function(err, data) {
     if(err) throw err;
 
     // populate it with templated questions from the node-quizzer module
@@ -297,7 +292,7 @@ app.get('/quiz/:id', function(req, res) {
 
   // load the quiz.html template
   if(quiz) {
-    fs.readFile(__dirname + '/views/quiz.ejs', function(err, data) {
+    fs.readFile(__dirname + '/public/quiz.html', function(err, data) {
       if(err) throw err;
 
       // populate it with templated questions from the node-quizzer module
