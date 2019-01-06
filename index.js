@@ -21,6 +21,8 @@ var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var passportfb = require('passport-facebook');
+var quizzer = require('node-quizzer');
+var _ = require('underscore-node');
 
 
 
