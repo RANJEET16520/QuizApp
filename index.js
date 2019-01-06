@@ -260,42 +260,6 @@ app.get('/profile', function (req, res) {
     res.send('HI THERE');
 });
 
-app.get('/auth/facebook', passport.authenticate('facebook', { scope : ['public_profile', 'email'] }));
-
-        // handle the callback after facebook has authenticated the user
-        app.get('/auth/facebook/callback',
-            passport.authenticate('facebook', {
-                successRedirect : '/profile',
-                failureRedirect : '/'
-            }));
-
-
-            app.get('/connect/facebook', passport.authorize('facebook', { scope : ['public_profile', 'email'] }));
-
-        // handle the callback after facebook has authorized the user
-        app.get('/connect/facebook/callback',
-            passport.authorize('facebook', {
-                successRedirect : '/profile',
-                failureRedirect : '/'
-            }));
-
-
-
-   app.get('/unlink/facebook', isLoggedIn, function(req, res) {
-        var user            = req.user;
-        user.facebook.token = undefined;
-        user.save(function(err) {
-            res.redirect('/profile');
-        });
-    });
-
-
-   function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-
-    res.redirect('/');
-}
 
 
 app.get('/register', function (req, res)
