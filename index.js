@@ -421,7 +421,7 @@ app.post('/login',function (req,res) {
       // console.log( passwordHash.verify(password, res1[0].password));
          if(res1.length>0 && passwordHash.verify(password, res1[0].password))
          {
-            res.redirect('/');
+            res.redirect('/quizzer');
          }
          else
          {
