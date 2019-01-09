@@ -21,6 +21,8 @@ var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var passportfb = require('passport-facebook');
+var quizzer = require('node-quizzer');
+var _sh = require('underscore-node');
 
 
 var count=1;
@@ -157,20 +159,13 @@ var createSchema = mongoose.Schema({
 });
 var Create = mongoose.model("Create", createSchema);
 
-
-
 var app = express();
 app.set('port', (process.env.PORT || 5000));
 
 // var uri ='mongodb://shkamboj:qwerty123@localhost:27017/open_elec16?authSource=admin'; 
-
 var uri = 'mongodb://amit:amit123@ds237072.mlab.com:37072/quizapp';
 
- 
 mongoose.connect(uri);
-
-
-
 
 app.set('view engine', 'ejs');
 app.set('views','./views');
@@ -182,10 +177,6 @@ const url = require('url');
 
 app.use(cookieParser());
 
-
-
-
- 
 app.use(cookieSession({
   name: 'session',
   keys: ['poiuytrewq'],
@@ -194,15 +185,9 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 
-
-
 app.set("view options", { layout: false } );
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
-
-
-
-
 
 mailer.extend(app, {
   from: 'iiitu16118@gmail.com',
@@ -216,13 +201,10 @@ mailer.extend(app, {
   }
 });
 
-
-
 app.get('/quizzer', function (req, res) {
   delete req.session.uid;
   res.redirect('https://quizzersh.herokuapp.com/');
 });
-
 
 app.get('/xyz', function(req, res){
    if(req.session.page_views){
@@ -237,7 +219,6 @@ app.get('/xyz', function(req, res){
 app.get('/', function (req, res) {
     res.render('main');
 });
-
 
 app.get('/register', function (req, res)
 {
@@ -281,13 +262,9 @@ app.post('/fagnum', function(req,res){
   });
 });
 
-
 app.get('/fac_signup',function(req, res){
   res.render('fac_signup');
 })
-
-
-
 
 app.post('/fac_signup',function (req,res) {
   var fname = req.body.fname;
@@ -313,8 +290,6 @@ app.post('/fac_signup',function (req,res) {
     }
   });
 });
-
-
 
 app.get('/fac_login',function(req,res){
    res.render('fac_login');
@@ -345,20 +320,10 @@ app.post('/fac_login',function (req,res) {
 });
 });
 
-
-
-
 app.get('/signup',function(req,res){
    res.render('signup');
 });
 
-
-
-
-
-
-
-     
 app.post('/signup',function (req,res) {
   var rollno = req.body.rollno;
   var email = req.body.email;
@@ -421,6 +386,7 @@ app.post('/login',function (req,res) {
       // console.log( passwordHash.verify(password, res1[0].password));
          if(res1.length>0 && passwordHash.verify(password, res1[0].password))
          {
+         	req.session.uid = 'string';
             res.redirect('/quizzer');
          }
          else
