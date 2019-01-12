@@ -21,6 +21,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var passportfb = require('passport-facebook');
+var sh = require('underscore-node');
 
 
 var count=1;
