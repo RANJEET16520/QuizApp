@@ -21,17 +21,11 @@
     <div class="row">
       <div class="col-xs-12">
         <h4 class="text-center">Start Quiz</h4>
-        <form class="form-horizontal" role="form" action="/quiz" method="get" onsubmit="return submitForm(this)">
+        <form class="form-horizontal" role="form" action="/routes/quiz" method="get" onsubmit="return submitForm(this)">
           <div class="form-group">
             <label class="control-label col-sm-3">Full Name:</label>
             <div class="col-sm-9">
               <input class="form-control" type="text" name="fullname" placeholder="Full Name" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-3">Email:</label>
-            <div class="col-sm-9">
-              <input class="form-control" type="email" name="email" placeholder="Email" required>
             </div>
           </div>
           <div class="form-group">
@@ -46,12 +40,7 @@
               <input class="form-control" type="number" name="time" placeholder="How many minutes" required>
             </div>
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-3">Passing %</label>
-            <div class="col-sm-9">
-              <input class="form-control" type="number" name="perc" placeholder="Acceptance percentage" required>
-            </div>
-          </div>
+          
           <div class="form-group">
             <label class="control-label col-sm-3">Quiz</label>
             <div class="col-sm-9">
@@ -79,7 +68,7 @@
     function submitForm(form) {
       var $form = $('form');
       if (submitName == "start") {
-        $form.attr('action', '/quiz').submit();
+        $form.attr('action', '/routes/quiz').submit();
       } else if (submitName == "generate") {
         $form.attr('action', '/tokenize').submit();
       }
