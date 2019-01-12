@@ -21,11 +21,10 @@ var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var passportfb = require('passport-facebook');
-var _ = require('underscore')._;
-var qu = require('node-quizzer');
+
 
 var count=1;
-const router = express.Router();
+
 
 
 var personSchema = mongoose.Schema({
@@ -200,10 +199,13 @@ mailer.extend(app, {
   }
 });
 
-app.get('/quizzer', function (req, res) {
-  delete req.session.uid;
-  res.redirect('https://quizzersh.herokuapp.com/');
-});
+
+
+
+// app.get('/quizzer', function (req, res) {
+//   delete req.session.uid;
+//   res.redirect('https://quizzersh.herokuapp.com/');
+// });
 
 app.get('/xyz', function(req, res){
    if(req.session.page_views){
@@ -214,6 +216,10 @@ app.get('/xyz', function(req, res){
       res.send("Welcome to this page for the first time!");
    }
 });
+
+
+var route = require('./routes/quiz.js');
+app.use('/routes',route);
 
 app.get('/', function (req, res) {
     res.render('main');
@@ -386,7 +392,7 @@ app.post('/login',function (req,res) {
          if(res1.length>0 && passwordHash.verify(password, res1[0].password))
          {
          	req.session.uid = 'string';
-            res.redirect('/quizzer');
+            res.redirect('/routes/quizze');
          }
          else
          {
