@@ -218,8 +218,6 @@ app.get('/xyz', function(req, res){
 });
 
 
-var route = require('./routes/quiz.js');
-app.use('/routes',route);
 
 app.get('/', function (req, res) {
     res.render('main');
@@ -392,7 +390,7 @@ app.post('/login',function (req,res) {
          if(res1.length>0 && passwordHash.verify(password, res1[0].password))
          {
          	req.session.uid = 'string';
-            res.redirect('/routes/quizze');
+            res.redirect('https://quizzersh.herokuapp.com/');
          }
          else
          {
