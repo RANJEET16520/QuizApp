@@ -249,11 +249,86 @@ app.get('/xyz', function(req, res){
    }
 });
 
-
-
 app.get('/', function (req, res) {
     res.render('main');
 });
+
+
+
+app.get('/quizap', function(req, res) {
+  var list = quizzer.getCategories();
+  console.log(list);
+
+  // load the index.html template
+  fs.readFile(__dirname + '/public/index.html', function(err, data) {
+    if(err) throw err;
+
+    // populate it with templated questions from the node-quizzer module
+    var compiled = _.template(data.toString());
+    res.send(compiled({ availableQuizzes: list }));
+  });
+});
+
+
+
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/quiz', function(req, res) {
+  var quiz = getQuiz('generate', req);
+
+  // load the quiz.html template
+  fs.readFile(__dirname + '/public/quiz.html', function(err, data) {
+    if(err) throw err;
+
+    // populate it with templated questions from the node-quizzer module
+    var compiled = _.template(data.toString());
+    res.send(compiled({ quiz: quiz }));
+  });
+});
+
+app.get('/tokenize', function(req, res) {
+  var quiz = getQuiz('tokenize', req),
+    tokenUrl = req.protocol + '://' + req.get('host') + "/quiz/" + quiz.quid;
+
+  res.set('Content-Type', 'text/plain');
+  res.send(tokenUrl);
+});
+
+app.get('/quiz/:id', function(req, res) {
+  var quiz = quizzer.fromToken(req.params.id);
+
+  // load the quiz.html template
+  if(quiz) {
+    fs.readFile(__dirname + '/public/quiz.html', function(err, data) {
+      if(err) throw err;
+
+      // populate it with templated questions from the node-quizzer module
+      var compiled = _.template(data.toString());
+      res.send(compiled({ quiz: quiz }));
+    });
+  } else {
+    res.send("This token has expired!");
+  }
+})
+
+app.get('/review', function(req, res) {
+  var urlParts = url.parse(req.url, true),
+    query = urlParts.query,
+    results = quizzer.evaluate(query);
+
+  // load the review.html template
+  fs.readFile(__dirname + '/public/review.html', function(err, data) {
+    if(err) throw err;
+
+    // populate it with templated questions from the node-quizzer module
+    var compiled = _.template(data.toString());
+    res.send(compiled({ results: results }));
+  });
+});
+
+
+
 
 app.get('/register', function (req, res)
 {
@@ -422,7 +497,7 @@ app.post('/login',function (req,res) {
          if(res1.length>0 && passwordHash.verify(password, res1[0].password))
          {
          	req.session.uid = 'string';
-            res.redirect('https://quizzersh.herokuapp.com/');
+            res.redirect('/quizap');
          }
          else
          {
@@ -443,7 +518,7 @@ app.post('/login',function (req,res) {
 // });
 
 
-app.post('/quiz',function(req, res){
+app.post('/quiz11',function(req, res){
     if(req.body.noq=="DBMS")
     res.redirect('/ten');
   else
