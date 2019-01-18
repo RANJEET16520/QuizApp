@@ -1,0 +1,95 @@
+{
+  "correct": [
+    "35"
+  ],
+  "stats": {
+    "quiz": {
+      "uname": "Shubham Kamboj",
+      "name": "Blockchain",
+      "count": 4,
+      "time": 1,
+      "perc": 50,
+      "quid": "wtb5ahv",
+      "questions": [
+        {
+          "qid": 30,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "What REST stands for?",
+          "opts": [
+            "REpresentational State Transfer",
+            "Resource Efficient State Transfer",
+            "Real Elegant State Transfer",
+            "Resource Elegant State Transfer"
+          ],
+          "correct": [
+            0
+          ]
+        },
+        {
+          "qid": 35,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which method of fs module is used to get information about file?",
+          "opts": [
+            "fs.open(path, flags[, mode], callback)",
+            "fs.stat(path, callback)",
+            "fs.readFile(path, flags[, mode], callback)",
+            "None of the above."
+          ],
+          "correct": [
+            1
+          ]
+        },
+        {
+          "qid": 29,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following stands true for dns.lookup(hostname[, options], callback) method?",
+          "opts": [
+            "Resolves a hostname (e.g. 'google.com') into the first found A (IPv4) or AAAA (IPv6) record.",
+            "If options is not provided, then IP v4 and v6 addresses are both valid. If options is an integer, then it must be 4 or 6.",
+            "Both of the above.",
+            "None of the above."
+          ],
+          "correct": [
+            2
+          ]
+        },
+        {
+          "qid": 8,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following is the correct way to get a joint path?",
+          "opts": [
+            "path.join('/test', 'test1', '2slashes/1slash', 'tab', '..')",
+            "path.combine('/test', 'test1', '2slashes/1slash', 'tab', '..')",
+            "buffer.join('/test', 'test1', '2slashes/1slash', 'tab', '..')",
+            "None of the above."
+          ],
+          "correct": [
+            0
+          ]
+        }
+      ]
+    },
+    "correct": 1,
+    "ungraded": 0,
+    "unevaluated": [],
+    "total": 4,
+    "perc": 25,
+    "pass": false
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "correct": [],
+  "stats": {
+    "quiz": {
+      "uname": "11111111111111111111111111111111",
+      "name": "Blockchain",
+      "count": 1,
+      "time": 1,
+      "perc": 50,
+      "quid": "o7xu3zj",
+      "questions": [
+        {
+          "qid": 4,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following is true with respect to Node.",
+          "opts": [
+            "Every API of Node js are asynchronous.",
+            "Node being a single thread, and uses async function calls to maintain the concurrency.",
+            "Node thread keeps an event loop and whenever any task get completed, it fires the corresponding event which signals the event listener function to get executed.",
+            "All of the above."
+          ],
+          "correct": [
+            1
+          ]
+        }
+      ]
+    },
+    "correct": 0,
+    "ungraded": 0,
+    "unevaluated": [],
+    "total": 1,
+    "perc": 0,
+    "pass": false
+  }
+}

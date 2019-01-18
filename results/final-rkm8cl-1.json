@@ -1,0 +1,57 @@
+{
+  "correct": [
+    "22"
+  ],
+  "stats": {
+    "quiz": {
+      "uname": "1",
+      "name": "Java",
+      "count": 2,
+      "time": 4,
+      "perc": 50,
+      "quid": "rkm8cl",
+      "questions": [
+        {
+          "qid": 22,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "How Node based web servers are different from traditional web servers?",
+          "opts": [
+            "Node based server process request much faster than traditional server.",
+            "Node based server uses a single threaded model and can services much larger number of requests than traditional server like Apache HTTP Server.",
+            "There is no much difference between the two.",
+            "None of the above."
+          ],
+          "correct": [
+            1
+          ]
+        },
+        {
+          "qid": 21,
+          "graded": true,
+          "type": 0,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "A stream fires data event when there is data available to read.",
+          "opts": [
+            "false",
+            "true"
+          ],
+          "correct": [
+            1
+          ]
+        }
+      ]
+    },
+    "correct": 1,
+    "ungraded": 0,
+    "unevaluated": [],
+    "total": 2,
+    "perc": 50,
+    "pass": true
+  }
+}
