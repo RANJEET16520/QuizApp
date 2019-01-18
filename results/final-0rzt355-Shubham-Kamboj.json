@@ -1,0 +1,96 @@
+{
+  "correct": [
+    "13",
+    "41"
+  ],
+  "stats": {
+    "quiz": {
+      "uname": "Shubham Kamboj",
+      "name": "Blockchain",
+      "count": 4,
+      "time": 4,
+      "perc": 50,
+      "quid": "0rzt355",
+      "questions": [
+        {
+          "qid": 41,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following is not a valid HTTP method?",
+          "opts": [
+            "get",
+            "put",
+            "post",
+            "header"
+          ],
+          "correct": [
+            3
+          ]
+        },
+        {
+          "qid": 13,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following command will show version of Node?",
+          "opts": [
+            "$ npm --version",
+            "$ node --version",
+            "$ npm getVersion",
+            "$ node getVersion"
+          ],
+          "correct": [
+            1
+          ]
+        },
+        {
+          "qid": 7,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following is true about console global object?",
+          "opts": [
+            "There are built-in methods to be used for printing informational, warning and error messages in console.",
+            "console is used in synchronous way when destination is file or a terminal.",
+            "console is used in asynchronous way when destination is a pipe.",
+            "All of the above."
+          ],
+          "correct": [
+            3
+          ]
+        },
+        {
+          "qid": 15,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following is true about File I/O in Node applications?",
+          "opts": [
+            "Node implements File I/O using simple wrappers around standard POSIX functions.",
+            "Node File System (fs) module should be imported for File I/O opearations.",
+            "Both of the above.",
+            "None of the above."
+          ],
+          "correct": [
+            2
+          ]
+        }
+      ]
+    },
+    "correct": 2,
+    "ungraded": 0,
+    "unevaluated": [],
+    "total": 4,
+    "perc": 50,
+    "pass": true
+  }
+}
