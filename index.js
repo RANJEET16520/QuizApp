@@ -1,26 +1,59 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var request = require('request');
-var mongoose = require('mongoose');
-const fs = require('fs');
-var JSAlert = require("js-alert");
-var cookieParser = require('cookie-parser');
-var passwordHash = require('password-hash');
-var alert = require('alert-node');
-var pdf = require('express-pdf');
-var PDF = require('pdfkit'); 
-var mailer = require('express-mailer');
-var session = require('express-session');
-var cookieSession = require('cookie-session');
-var nodemailer = require('nodemailer');
-var mailer = require('express-mailer');
-var randomUrl = require('random-url');
-var async = require('async');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var bcrypt = require('bcrypt-nodejs');
-var crypto = require('crypto');
-var passportfb = require('passport-facebook');
+var
+  express = require('express'),
+  url = require('url'),
+  fs = require('fs'),
+  mongoose = require('mongoose'),
+  path = require('path'),
+  cookieParser = require('cookie-parser'),
+  cookieSession = require('cookie-session'),
+  mailer = require('express-mailer'),
+  quizzer = require('node-quizzer'),
+  passwordHash = require('password-hash'),
+  _ = require('underscore-node'),
+  getQuiz = function(method, req) {
+    var urlParts = url.parse(req.url, true),
+      query = urlParts.query,
+
+      // generate random quiz
+      quiz = quizzer[method]({
+        uname: query.fullname,
+        uemail: query.email,
+        name: query.quiz,
+        count: parseInt(query.count),
+        time: parseInt(query.time),
+        perc: parseInt(query.perc)
+      });
+
+    return quiz;
+  };
+
+
+
+
+
+// var express = require('express');
+// var bodyParser = require('body-parser');
+// var request = require('request');
+// var mongoose = require('mongoose');
+// const fs = require('fs');
+// var JSAlert = require("js-alert");
+// var cookieParser = require('cookie-parser');
+// var passwordHash = require('password-hash');
+// var alert = require('alert-node');
+// var pdf = require('express-pdf');
+// var PDF = require('pdfkit'); 
+// var mailer = require('express-mailer');
+// var session = require('express-session');
+// var cookieSession = require('cookie-session');
+// var nodemailer = require('nodemailer');
+// var mailer = require('express-mailer');
+// var randomUrl = require('random-url');
+// var async = require('async');
+// var passport = require('passport');
+// var LocalStrategy = require('passport-local').Strategy;
+// var bcrypt = require('bcrypt-nodejs');
+// var crypto = require('crypto');
+// var passportfb = require('passport-facebook');
 
 
 var count=1;
@@ -171,7 +204,6 @@ app.set('views','./views');
 var path = require('path');
 app.use('/static',express.static(__dirname + '/public'));
 
-const url = require('url');
 
 app.use(cookieParser());
 
