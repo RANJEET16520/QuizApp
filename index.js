@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var
   express = require('express'),
   url = require('url'),
@@ -54,6 +55,34 @@ var
 // var bcrypt = require('bcrypt-nodejs');
 // var crypto = require('crypto');
 // var passportfb = require('passport-facebook');
+=======
+var express = require('express');
+var bodyParser = require('body-parser');
+var request = require('request');
+var mongoose = require('mongoose');
+const fs = require('fs');
+var JSAlert = require("js-alert");
+var cookieParser = require('cookie-parser');
+var passwordHash = require('password-hash');
+var flash    = require('connect-flash');
+var morgan = require('morgan');
+var alert = require('alert-node');
+var pdf = require('express-pdf');
+var PDF = require('pdfkit'); 
+var mailer = require('express-mailer');
+var session = require('express-session');
+var cookieSession = require('cookie-session');
+var nodemailer = require('nodemailer');
+var mailer = require('express-mailer');
+var randomUrl = require('random-url');
+var async = require('async');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var bcrypt = require('bcrypt-nodejs');
+var crypto = require('crypto');
+var passportfb = require('passport-facebook');
+>>>>>>> f71b6b954ca5c1233e317eb0fa1fb0fcae3f1c00
+
 
 
 var count=1;
@@ -173,7 +202,7 @@ var linkSchema = mongoose.Schema({
       unique: true,
       startAt: 1,
     incrementBy: 1
-  	}
+    }
 });
 var Link = mongoose.model("Link", linkSchema);
 
@@ -219,6 +248,18 @@ var uri = 'mongodb://amit:amit123@ds237072.mlab.com:37072/quizapp';
 
 mongoose.connect(uri);
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+>>>>>>> f71b6b954ca5c1233e317eb0fa1fb0fcae3f1c00
 app.set('view engine', 'ejs');
 app.set('views','./views');
 
@@ -226,6 +267,8 @@ var path = require('path');
 app.use('/static',express.static(__dirname + '/public'));
 
 
+
+app.use(morgan('dev'));
 app.use(cookieParser());
 
 app.use(cookieSession({
@@ -236,6 +279,16 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 
+<<<<<<< HEAD
+=======
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+
+
+>>>>>>> f71b6b954ca5c1233e317eb0fa1fb0fcae3f1c00
 app.set("view options", { layout: false } );
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
@@ -276,6 +329,7 @@ app.get('/', function (req, res) {
 
 
 
+<<<<<<< HEAD
 app.get('/quizap', function(req, res) {
 	if(req.session.rollno)
 	{
@@ -380,6 +434,17 @@ app.get('/review', function(req, res) {
 });
 
 
+=======
+app.get('/practice', function (req, res) {
+    res.render('practice');
+});
+
+
+app.get('/profile', function (req, res) {
+    res.send('HI THERE');
+});
+
+>>>>>>> f71b6b954ca5c1233e317eb0fa1fb0fcae3f1c00
 
 
 app.get('/register', function (req, res)
@@ -564,10 +629,17 @@ app.post('/login',function (req,res) {
 });
 });
 
+<<<<<<< HEAD
 app.get('/quiz11',function(req,res){
 	
 	 if(req.session.uid)
 		res.render('quiz');
+=======
+app.get('/quiz',function(req,res){
+  
+   if(req.session.uid)
+    res.render('quiz');
+>>>>>>> f71b6b954ca5c1233e317eb0fa1fb0fcae3f1c00
   else
     res.send("YOu are not logged in");
    
