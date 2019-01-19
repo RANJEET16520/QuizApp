@@ -1,0 +1,41 @@
+{
+  "correct": [
+    "33"
+  ],
+  "stats": {
+    "quiz": {
+      "uname": "Shubham Kamboj",
+      "name": "C++",
+      "count": 1,
+      "time": 1,
+      "perc": 50,
+      "quid": "v4vtzoh",
+      "questions": [
+        {
+          "qid": 33,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following command will show version of Node?",
+          "opts": [
+            "$ npm --version",
+            "$ node --version",
+            "$ npm getVersion",
+            "$ node getVersion"
+          ],
+          "correct": [
+            1
+          ]
+        }
+      ]
+    },
+    "correct": 1,
+    "ungraded": 0,
+    "unevaluated": [],
+    "total": 1,
+    "perc": 100,
+    "pass": true
+  }
+}

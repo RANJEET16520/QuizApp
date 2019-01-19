@@ -1,0 +1,39 @@
+{
+  "correct": [],
+  "stats": {
+    "quiz": {
+      "uname": "Shubham Kamboj",
+      "name": "Blockchain",
+      "count": 1,
+      "time": 1,
+      "perc": 50,
+      "quid": "0ioko87",
+      "questions": [
+        {
+          "qid": 29,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following stands true for dns.lookup(hostname[, options], callback) method?",
+          "opts": [
+            "Resolves a hostname (e.g. 'google.com') into the first found A (IPv4) or AAAA (IPv6) record.",
+            "If options is not provided, then IP v4 and v6 addresses are both valid. If options is an integer, then it must be 4 or 6.",
+            "Both of the above.",
+            "None of the above."
+          ],
+          "correct": [
+            2
+          ]
+        }
+      ]
+    },
+    "correct": 0,
+    "ungraded": 0,
+    "unevaluated": [],
+    "total": 1,
+    "perc": 0,
+    "pass": false
+  }
+}

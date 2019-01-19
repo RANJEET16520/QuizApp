@@ -1,0 +1,39 @@
+{
+  "correct": [],
+  "stats": {
+    "quiz": {
+      "uname": "Shubham Kamboj",
+      "name": "Python",
+      "count": 1,
+      "time": 4,
+      "perc": 50,
+      "quid": "drr93ln",
+      "questions": [
+        {
+          "qid": 6,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which method of fs module is used to truncate a file?",
+          "opts": [
+            "fs.delete(fd, len, callback)",
+            "fs.remove(fd, len, callback)",
+            "fs.ftruncate(fd, len, callback)",
+            "None of the above."
+          ],
+          "correct": [
+            2
+          ]
+        }
+      ]
+    },
+    "correct": 0,
+    "ungraded": 0,
+    "unevaluated": [],
+    "total": 1,
+    "perc": 0,
+    "pass": false
+  }
+}

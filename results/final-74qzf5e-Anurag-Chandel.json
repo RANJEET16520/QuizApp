@@ -1,0 +1,111 @@
+{
+  "correct": [],
+  "stats": {
+    "quiz": {
+      "uname": "Anurag Chandel",
+      "name": "C++",
+      "count": 5,
+      "time": 5,
+      "perc": 50,
+      "quid": "74qzf5e",
+      "questions": [
+        {
+          "qid": 27,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following is true about console global object?",
+          "opts": [
+            "There are built-in methods to be used for printing informational, warning and error messages in console.",
+            "console is used in synchronous way when destination is file or a terminal.",
+            "console is used in asynchronous way when destination is a pipe.",
+            "All of the above."
+          ],
+          "correct": [
+            3
+          ]
+        },
+        {
+          "qid": 24,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following code converts a buffer buf to JSON object?",
+          "opts": [
+            "buf.toJSON()",
+            "buf.json()",
+            "buf.covertToJson()",
+            "buf.jsonify()"
+          ],
+          "correct": [
+            0
+          ]
+        },
+        {
+          "qid": 5,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which method of fs module is used to read a file?",
+          "opts": [
+            "fs.open(path, flags[, mode], callback)",
+            "fs.openFile(path, flags[, mode], callback)",
+            "fs.openPath(path, flags[, mode], callback)",
+            "fs.read(fd, buffer, offset, length, position, callback)"
+          ],
+          "correct": [
+            3
+          ]
+        },
+        {
+          "qid": 3,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "What npm stands for?",
+          "opts": [
+            "Node Package Manager",
+            "Node Project Manager",
+            "New Project Manager",
+            "New Package Manager"
+          ],
+          "correct": [
+            0
+          ]
+        },
+        {
+          "qid": 25,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which method of fs module is used to close a file?",
+          "opts": [
+            "fs.close(fd, callback)",
+            "fs.closeFile(fd, callback)",
+            "fs.closePath(fd, callback)",
+            "None of the above."
+          ],
+          "correct": [
+            0
+          ]
+        }
+      ]
+    },
+    "correct": 0,
+    "ungraded": 0,
+    "unevaluated": [],
+    "total": 5,
+    "perc": 0,
+    "pass": false
+  }
+}

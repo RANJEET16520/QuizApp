@@ -1,0 +1,60 @@
+{
+  "correct": [
+    "13",
+    "28"
+  ],
+  "stats": {
+    "quiz": {
+      "uname": "Shubham Kamboj",
+      "name": "nodejs",
+      "count": 2,
+      "time": 1,
+      "perc": 50,
+      "quid": "atrlfak",
+      "questions": [
+        {
+          "qid": 13,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following command will show version of Node?",
+          "opts": [
+            "$ npm --version",
+            "$ node --version",
+            "$ npm getVersion",
+            "$ node getVersion"
+          ],
+          "correct": [
+            1
+          ]
+        },
+        {
+          "qid": 28,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following code print the platform of operating system?",
+          "opts": [
+            "console.log('platform : ' + os.platform);",
+            "console.log('platform : ' + os.platform());",
+            "console.log('platform : ' + os.getPlatform());",
+            "None of the above."
+          ],
+          "correct": [
+            1
+          ]
+        }
+      ]
+    },
+    "correct": 2,
+    "ungraded": 0,
+    "unevaluated": [],
+    "total": 2,
+    "perc": 100,
+    "pass": true
+  }
+}

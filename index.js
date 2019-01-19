@@ -190,6 +190,27 @@ var createSchema = mongoose.Schema({
 });
 var Create = mongoose.model("Create", createSchema);
 
+
+
+var testScore = mongoose.Schema({
+  uname:{type: String,
+      required: true
+    },
+    topic:{type:String,
+      required :true
+    },
+    total_ques:{type: Number,
+      required: true
+    },
+    correct:{type:Number,
+      required :true
+    },
+    percentage:{type: String,
+      required: true
+    }
+});
+var Test = mongoose.model("Test", testScore);
+
 var app = express();
 app.set('port', (process.env.PORT || 5000));
 
@@ -322,6 +343,31 @@ app.get('/review', function(req, res) {
   var urlParts = url.parse(req.url, true),
     query = urlParts.query,
     results = quizzer.evaluate(query);
+    uname = req.session.rollno;
+    topic = results.stats.quiz['name'];
+    total_ques = results.stats['total'];
+    correct = results.stats['correct'];
+    percentage = results.stats['perc'];
+
+    var test = new Test({
+    uname : uname,
+    topic : topic,
+    total_ques : total_ques,
+    correct : correct,
+    percentage : percentage
+  });
+    test.save(function (err){
+    if(err)
+    {
+      console.log("ERRONN");
+    }
+  });
+    console.log(results.stats['perc']);
+    console.log(results.stats['total']);
+    console.log(results.stats['correct']);
+    console.log(results.stats.quiz['name']);
+    console.log(req.session.rollno);
+
 
   // load the review.html template
   fs.readFile(__dirname + '/public/review.html', function(err, data) {
@@ -425,7 +471,7 @@ app.post('/fac_login',function (req,res) {
             console.log('OK');
             console.log(res2[0].teach_id);
             req.session.uid = 'string';
-            res.redirect('/quiz');
+            res.redirect('/quiz11');
          }
          else
          {
@@ -518,14 +564,14 @@ app.post('/login',function (req,res) {
 });
 });
 
-// app.get('/quiz',function(req,res){
+app.get('/quiz11',function(req,res){
 	
-// 	 if(req.session.uid)
-// 		res.render('quiz');
-//   else
-//     res.send("YOu are not logged in");
+	 if(req.session.uid)
+		res.render('quiz');
+  else
+    res.send("YOu are not logged in");
    
-// });
+});
 
 
 app.post('/quiz11',function(req, res){

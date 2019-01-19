@@ -1,0 +1,57 @@
+{
+  "correct": [
+    "17"
+  ],
+  "stats": {
+    "quiz": {
+      "uname": "Shubham Kamboj",
+      "name": "Blockchain",
+      "count": 2,
+      "time": 2,
+      "perc": 50,
+      "quid": "0ic22oj",
+      "questions": [
+        {
+          "qid": 6,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which method of fs module is used to truncate a file?",
+          "opts": [
+            "fs.delete(fd, len, callback)",
+            "fs.remove(fd, len, callback)",
+            "fs.ftruncate(fd, len, callback)",
+            "None of the above."
+          ],
+          "correct": [
+            2
+          ]
+        },
+        {
+          "qid": 17,
+          "graded": true,
+          "type": 0,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Is process a global object?",
+          "opts": [
+            "true",
+            "false"
+          ],
+          "correct": [
+            0
+          ]
+        }
+      ]
+    },
+    "correct": 1,
+    "ungraded": 0,
+    "unevaluated": [],
+    "total": 2,
+    "perc": 50,
+    "pass": true
+  }
+}

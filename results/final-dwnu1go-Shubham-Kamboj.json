@@ -1,0 +1,109 @@
+{
+  "correct": [],
+  "stats": {
+    "quiz": {
+      "uname": "Shubham Kamboj",
+      "name": "nodejs",
+      "count": 5,
+      "time": 3,
+      "perc": 50,
+      "quid": "dwnu1go",
+      "questions": [
+        {
+          "qid": 12,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "All APIs of Node.JS are.",
+          "opts": [
+            "Asynchronous",
+            "Synchronous",
+            "Both of the above.",
+            "None of the above."
+          ],
+          "correct": [
+            0
+          ]
+        },
+        {
+          "qid": 40,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following is true about exec methd of child_process module.",
+          "opts": [
+            "The exec() method runs a command in a shell and buffers the output. ",
+            "The exec() method returns a buffer with a max size.",
+            "The exec() method waits for the process to end and tries to return all the buffered data at once.",
+            "All of the above."
+          ],
+          "correct": [
+            3
+          ]
+        },
+        {
+          "qid": 4,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following is true with respect to Node.",
+          "opts": [
+            "Every API of Node js are asynchronous.",
+            "Node being a single thread, and uses async function calls to maintain the concurrency.",
+            "Node thread keeps an event loop and whenever any task get completed, it fires the corresponding event which signals the event listener function to get executed.",
+            "All of the above."
+          ],
+          "correct": [
+            1
+          ]
+        },
+        {
+          "qid": 21,
+          "graded": true,
+          "type": 0,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "A stream fires data event when there is data available to read.",
+          "opts": [
+            "false",
+            "true"
+          ],
+          "correct": [
+            1
+          ]
+        },
+        {
+          "qid": 16,
+          "graded": true,
+          "type": 1,
+          "desc": null,
+          "code": null,
+          "lang": null,
+          "title": "Which of the following is true about setInterval(cb, ms) global function?",
+          "opts": [
+            "The setInterval(cb, ms) global function is used to run callback cb repeatedly after at least ms milliseconds.",
+            "The setInterval(cb, ms) method returns an opaque value that represents the timer which can be used to clear the timer using the function clearInterval(t).",
+            "Both of the above.",
+            "None of the above."
+          ],
+          "correct": [
+            2
+          ]
+        }
+      ]
+    },
+    "correct": 0,
+    "ungraded": 0,
+    "unevaluated": [],
+    "total": 5,
+    "perc": 0,
+    "pass": false
+  }
+}
