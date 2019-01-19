@@ -150,19 +150,24 @@ var Abc = mongoose.model("Abc", abcSchema);
 
 var testScore = mongoose.Schema({
   uname:{type: String,
-      required: true
+      required: true,
+      unique : false
     },
     topic:{type:String,
-      required :true
+      required :true,
+      unique : false
     },
-    total_ques:{type: Number,
-      required: true
+    total_ques:{type: String,
+      required: true,
+      unique : false
     },
-    correct:{type:Number,
-      required :true
+    correct:{type:String,
+      required :true,
+      unique : false
     },
     percentage:{type: String,
-      required: true
+      required: true,
+      unique : false
     }
 });
 var Test = mongoose.model("Test", testScore);
