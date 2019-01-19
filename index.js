@@ -256,7 +256,9 @@ app.get('/', function (req, res) {
 
 
 app.get('/quizap', function(req, res) {
-  var list = quizzer.getCategories();
+  if(req.session.uid)
+  {
+    var list = quizzer.getCategories();
   console.log(list);
 
   // load the index.html template
@@ -267,6 +269,8 @@ app.get('/quizap', function(req, res) {
     var compiled = _.template(data.toString());
     res.send(compiled({ availableQuizzes: list }));
   });
+  }
+  
 });
 
 
@@ -496,7 +500,7 @@ app.post('/login',function (req,res) {
       // console.log( passwordHash.verify(password, res1[0].password));
          if(res1.length>0 && passwordHash.verify(password, res1[0].password))
          {
-         	req.session.uid = 'string';
+         	req.session.rollno = rollno;
             res.redirect('/quizap');
          }
          else
