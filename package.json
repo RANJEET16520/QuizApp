@@ -1,0 +1,26 @@
+{
+  "name": "quizapp",
+  "version": "1.0.0",
+  "description": "QuizApp is a Quiz Website.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shkamboj/QuizApp.git"
+  },
+  "author": "Shubham Kamboj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shkamboj/QuizApp/issues"
+  },
+  "homepage": "https://github.com/shkamboj/QuizApp#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "express-mailer": "^0.3.1",
+    "node-quizzer": "^2.0.4",
+    "password-hash": "^1.2.2"
+  }
+}
