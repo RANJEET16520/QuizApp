@@ -551,14 +551,14 @@ app.post('/login',function (req,res) {
 });
 });
 
-// app.get('/quiz',function(req,res){
+app.get('/quiz11',function(req,res){
 	
-// 	 if(req.session.uid)
-// 		res.render('quiz');
-//   else
-//     res.send("YOu are not logged in");
+	 if(req.session.uid)
+		res.render('quiz');
+  else
+    res.send("YOu are not logged in");
    
-// });
+});
 
 
 app.post('/quiz11',function(req, res){
