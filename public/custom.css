@@ -141,3 +141,39 @@ td.text-center {
 td.text-right {
   text-align: right;
 }
+
+.buttonOne {
+  background: linear-gradient(#654ea3, #203A43);
+  border: 5px solid #fff;
+  color: #cdcdcd;
+  font-family: "futura";
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  font-size: 50px;
+  padding: 10px;
+  max-width: 25%;
+  margin: 2% auto;
+  border-radius: 50px;
+}
+
+.buttonOne:hover {
+  color: #fff;
+  background: linear-gradient(#ffd452, #F37335);
+}
+
+@media (max-width: 800px) {
+  .buttonOne {
+    font-size: 26px;
+    border: 3px solid #fff;
+  }
+}
+
+@media (max-width: 500px) {
+  .buttonOne {
+    font-size: 18px;
+    border: 2px solid #fff;
+  }
+}

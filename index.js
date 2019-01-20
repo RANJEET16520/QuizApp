@@ -636,8 +636,8 @@ app.get('/dash2',function(req,res){
 
 
 app.get('/logout', function (req, res) {
-  delete req.session.uid;
-  res.redirect('/fac_login');
+  delete req.session.rollno;
+  res.redirect('/');
 });
 
 
