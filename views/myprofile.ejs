@@ -5,13 +5,14 @@
 <div>
 <h1>Profile</h1>
   <ul class="employees">
+  	<span text-align='center'><%= "Roll No.: " + Test[0].uname%></span>
   <% for(var i=0; i<Test.length; i++) {%>
     <li class="employees">
-      <span><%= "Roll No.: " + Test[i].uname + ", "%></span>
-      <span><%="Topic/Subject: " + Test[i].topic%></span>
-      <span><%="Total Questions: " + Test[i].total_ques%></span>
-      <span><%="Correct: " + Test[i].correct%></span>
-      <span><%="Percentage: " + Test[i].percentage%></span>
+      <span><%=i+1 + "."%></span>
+      <span><%="Topic/Subject: " + Test[i].topic + ","%></span>
+      <span><%="Total Questions: " + Test[i].total_ques + "," %></span>
+      <span><%="Correct: " + Test[i].correct + ","%></span>
+      <span><%="Percentage: " + Test[i].percentage + "."%></span>
     </li>
   <% } %>
 </ul>
