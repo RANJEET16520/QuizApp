@@ -279,10 +279,15 @@ app.get('/', function (req, res) {
     res.render('main');
 });
 
+app.get('/just', function (req, res) {
+    console.log(req.session.rollno);
+});
+
+
 
 
 app.get('/quizap', function(req, res) {
-  if(req.session.uid)
+  if(req.session.rollno)
   {
     var list = quizzer.getCategories();
   console.log(list);
@@ -388,6 +393,13 @@ app.get('/register', function (req, res)
 {
     res.render('reg');
 });
+
+
+// app.get('/register', function (req, res)
+// {
+//     res.render('reg');
+// });
+
 
 app.get('/fagnum',function(req,res){
    res.render('fagnum');
@@ -506,7 +518,6 @@ app.post('/signup',function (req,res) {
     }
     else
     {
-      alert('Successfully Registered.');
       res.redirect('/login');
     }
   });
@@ -524,6 +535,20 @@ app.get('/viewdata',(req , res) =>{
         res.render('viewdata',{Person: i});
      })
  });
+
+
+
+app.get('/myprofile',function (req,res) {
+
+  Test.find({"uname" : req.session.rollno},function(err,res2){
+         if(res2.length>0)
+         {
+            console.log('OK');
+            res.render('myprofile',{Test: res2});
+         }
+          
+});
+});
 
 
 
