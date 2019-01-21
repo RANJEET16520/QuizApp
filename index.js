@@ -428,7 +428,7 @@ app.get('/register', function (req, res)
 
 // app.get('/register', function (req, res)
 // {
-//     res.render('reg');
+//     res.render('reg');s
 // });
 
 
@@ -587,6 +587,10 @@ app.get('/myprofile',function (req,res) {
          {
             console.log('OK');
             res.render('myprofile',{Test: res2});
+         }
+         else 
+         {
+            res.redirect('login');
          }
           
 });
