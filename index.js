@@ -622,7 +622,6 @@ app.post('/login',function (req,res) {
          }
          else
          {
-            alert('Wrong Details');
             res.redirect('login');
          }
           
