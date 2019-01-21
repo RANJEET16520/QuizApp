@@ -174,6 +174,28 @@ var Test = mongoose.model("Test", testScore);
 
 
 
+var codeSwap = mongoose.Schema({
+  uname:{type: String,
+      required: true,
+      unique : false
+    },
+    total_ques:{type: String,
+      required: true,
+      unique : false
+    },
+    correct:{type:String,
+      required :true,
+      unique : false
+    },
+    percentage:{type: String,
+      required: true,
+      unique : false
+    }
+});
+var Code = mongoose.model("Code", codeSwap);
+
+
+
 var pdfSchema = mongoose.Schema({
     fullname:{type: String,
       required: true
@@ -356,7 +378,6 @@ app.get('/review', function(req, res) {
     total_ques = results.stats['total'];
     correct = results.stats['correct'];
     percentage = results.stats['perc'];
-
     var test = new Test({
     uname : uname,
     topic : topic,
@@ -364,6 +385,16 @@ app.get('/review', function(req, res) {
     correct : correct,
     percentage : percentage
   });
+    var code = new Code({
+    uname : uname,
+    total_ques : total_ques,
+    correct : correct,
+    percentage : percentage
+  });
+    if(topic == "nodejs")
+    {
+      code.save();
+    }
     test.save(function (err){
     if(err)
     {
@@ -515,6 +546,7 @@ app.post('/signup',function (req,res) {
     if(err)
     {
       console.log("ERRONN");
+      res.redirect('/signup');
     }
     else
     {
@@ -535,6 +567,16 @@ app.get('/viewdata',(req , res) =>{
         res.render('viewdata',{Person: i});
      })
  });
+
+
+app.get('/leaderboard',(req , res) =>{
+    Code.find().sort({percentage: 'desc'}).exec(function(err , i){
+        if (err) return console.log(err);
+
+        res.render('leader',{Code: i});
+     })
+ });
+
 
 
 
