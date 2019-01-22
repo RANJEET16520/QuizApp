@@ -425,6 +425,11 @@ app.get('/register', function (req, res)
     res.render('reg');
 });
 
+app.get('/trending', function (req, res)
+{
+    res.render('trend');
+});
+
 
 // app.get('/register', function (req, res)
 // {
