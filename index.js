@@ -5,6 +5,7 @@ var
   mongoose = require('mongoose'),
   path = require('path'),
   cookieParser = require('cookie-parser'),
+  
   cookieSession = require('cookie-session'),
   mailer = require('express-mailer'),
   quizzer = require('node-quizzer'),
@@ -30,7 +31,9 @@ var
 
 
 
-
+// multer = require("multer"),
+//   cloudinary = require("cloudinary"),
+//   cloudinaryStorage = require("multer-storage-cloudinary"),
 // var express = require('express');
 // var bodyParser = require('body-parser');
 // var request = require('request');
@@ -238,6 +241,16 @@ var createSchema = mongoose.Schema({
 });
 var Create = mongoose.model("Create", createSchema);
 
+
+// const storage = cloudinaryStorage({
+// cloudinary: cloudinary,
+// folder: "demo",
+// allowedFormats: ["jpg", "png"],
+// transformation: [{ width: 500, height: 500, crop: "limit" }]
+// });
+
+// const parser = multer({ storage: storage });
+
 var app = express();
 app.set('port', (process.env.PORT || 5000));
 
@@ -281,6 +294,14 @@ mailer.extend(app, {
 
 
 
+// cloudinary.config({
+// cloud_name: quizerapp,
+// api_key: 118996875592891,
+// api_secret: J47Z-EOJC5FPNfBxGXOtzzz50nM
+// });
+
+
+
 
 // app.get('/quizzer', function (req, res) {
 //   delete req.session.uid;
@@ -304,6 +325,21 @@ app.get('/', function (req, res) {
 app.get('/just', function (req, res) {
     console.log(req.session.rollno);
 });
+
+// app.get('/images', function (req, res) {
+//     res.render('img');
+// });
+
+// app.post('/images', parser.single("image"), (req, res) => {
+//   console.log(req.file) // to see what is returned to you
+//   const image = {};
+//   image.url = req.file.url;
+//   image.id = req.file.public_id;
+
+//   Image.create(image) // save image information in database
+//     .then(newImage => res.json(newImage))
+//     .catch(err => console.log(err));
+// });
 
 
 
