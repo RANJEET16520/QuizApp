@@ -425,9 +425,9 @@ app.get('/register', function (req, res)
     res.render('reg');
 });
 
-app.get('/trending', function (req, res)
+app.get('/home', function (req, res)
 {
-    res.render('trend');
+    res.render('main');
 });
 
 
