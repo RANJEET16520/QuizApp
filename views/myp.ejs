@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="/static/custom.css">
-    <title>MyProfile</title>
+    <title>User Profile</title>
     <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
 </head>
 
@@ -23,8 +23,8 @@
 </tr>
 </thead>
 <tbody class="table-hover">
-	<% for(var i=0; i<Test.length; i++) {%>
-    	<tr>
+  <% for(var i=0; i<Test.length; i++) {%>
+      <tr>
       <td class="text-left"><span><%=i+1 + "."%></span></td>
       <td class="text-left"><span><%=Test[i].topic%></span></td>
       <td class="text-left"><span><%=Test[i].total_ques%></span></td>
@@ -34,12 +34,9 @@
       
   <% } %>
 
-
-    
-
-
 </tbody>
 </table>
+
   
 
   </body>

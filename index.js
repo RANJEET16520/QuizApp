@@ -326,6 +326,23 @@ app.get('/just', function (req, res) {
     console.log(req.session.rollno);
 });
 
+
+
+app.get('/profile/:rollno', function(req, res)
+{
+  Test.find({"uname" : req.params.rollno},function(err,res2){
+         if(res2.length>0)
+         {
+            console.log('OK');
+            res.render('myp',{Test: res2});
+         }
+         else 
+         {
+            res.redirect('login');
+         }
+       });
+});
+
 // app.get('/images', function (req, res) {
 //     res.render('img');
 // });
