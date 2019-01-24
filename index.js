@@ -280,6 +280,9 @@ app.set("view options", { layout: false } );
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 
+
+
+
 mailer.extend(app, {
   from: 'iiitu16118@gmail.com',
   host: 'smtp.gmail.com', // hostname
@@ -682,7 +685,7 @@ app.get('/leaderboard',(req , res) =>{
 app.get('/myprofile',function (req,res) {
 
   Test.find({"uname" : req.session.rollno},function(err,res2){
-         if(res2.length>0)
+         if(req.session.rollno)
          {
             console.log('OK');
             res.render('myprofile',{Test: res2});
@@ -721,7 +724,7 @@ app.post('/login',function (req,res) {
          if(res1.length>0 && passwordHash.verify(password, res1[0].password))
          {
          	req.session.rollno = rollno;
-            res.redirect('/myprofile');
+          res.redirect('quizap');
          }
          else
          {
