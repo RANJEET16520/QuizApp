@@ -4,15 +4,16 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="/static/custom.css">
-    <title>MyProfile</title>
+    <title>User Profile</title>
     <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
 </head>
 
 <body>
+
+<button id="follow-button">+ Follow</button>  
 <div class="table-title">
 <h3><span><%= "Roll No.: " + Test[0].uname%></span></h3>
 </div>
-<div onclick="location.href='/quizap'" type = "button" class="buttonOne">Go to Quiz</div>
 <table class="table-fill">
 <thead>
 <tr>
@@ -24,8 +25,8 @@
 </tr>
 </thead>
 <tbody class="table-hover">
-	<% for(var i=0; i<Test.length; i++) {%>
-    	<tr>
+  <% for(var i=0; i<Test.length; i++) {%>
+      <tr>
       <td class="text-left"><span><%=i+1 + "."%></span></td>
       <td class="text-left"><span><%=Test[i].topic%></span></td>
       <td class="text-left"><span><%=Test[i].total_ques%></span></td>
@@ -38,7 +39,6 @@
 </tbody>
 </table>
 
-<div onclick="location.href='/logout'" type = "button" class="buttonOne">Log Out</div>
   
 
   </body>

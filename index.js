@@ -318,8 +318,16 @@ app.get('/xyz', function(req, res){
    }
 });
 
+
 app.get('/', function (req, res) {
+  if(req.session.rollno)
+  {
     res.render('main');
+  }
+  else
+  {
+    res.render('main2');
+  }
 });
 
 app.get('/just', function (req, res) {
@@ -330,17 +338,37 @@ app.get('/just', function (req, res) {
 
 app.get('/profile/:rollno', function(req, res)
 {
-  Test.find({"uname" : req.params.rollno},function(err,res2){
+  if(req.session.rollno)
+  {
+    Test.find({"uname" : req.params.rollno},function(err,res2){
+         if(res2.length>0)
+         {
+            console.log('OK');
+            res.render('myp2',{Test: res2});
+         }
+         else
+         {
+            res.redirect('login');
+         }
+  });
+  }
+  else
+  {
+    Test.find({"uname" : req.params.rollno},function(err,res2){
          if(res2.length>0)
          {
             console.log('OK');
             res.render('myp',{Test: res2});
          }
-         else 
+         else
          {
             res.redirect('login');
          }
-       });
+  });
+  }
+  
+
+
 });
 
 // app.get('/images', function (req, res) {
@@ -403,6 +431,19 @@ app.get('/tokenize', function(req, res) {
 
   res.set('Content-Type', 'text/plain');
   res.send(tokenUrl);
+});
+
+
+
+app.get('/takeaquiz', function (req, res) {
+  if(req.session.rollno)
+  {
+    res.redirect('/quizap');
+  }
+  else
+  {
+    res.redirect('/login');
+  }
 });
 
 app.get('/quiz/:id', function(req, res) {
@@ -680,7 +721,7 @@ app.post('/login',function (req,res) {
          if(res1.length>0 && passwordHash.verify(password, res1[0].password))
          {
          	req.session.rollno = rollno;
-            res.redirect('/quizap');
+            res.redirect('/myprofile');
          }
          else
          {
