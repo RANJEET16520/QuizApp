@@ -521,7 +521,7 @@ app.get('/register', function (req, res)
 
 app.get('/home', function (req, res)
 {
-    res.render('main');
+    res.redirect('/');
 });
 
 
