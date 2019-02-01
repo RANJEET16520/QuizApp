@@ -5,7 +5,6 @@ var
   mongoose = require('mongoose'),
   path = require('path'),
   cookieParser = require('cookie-parser'),
-  
   cookieSession = require('cookie-session'),
   mailer = require('express-mailer'),
   quizzer = require('node-quizzer'),
@@ -728,6 +727,8 @@ app.post('/login',function (req,res) {
          }
          else
          {
+            
+            
             res.redirect('login');
          }
           
