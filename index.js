@@ -724,7 +724,7 @@ app.post('/login',function (req,res) {
          if(res1.length>0 && passwordHash.verify(password, res1[0].password))
          {
          	req.session.rollno = rollno;
-          res.redirect('quizap');
+          res.redirect('/');
          }
          else
          {
