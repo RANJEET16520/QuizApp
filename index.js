@@ -181,10 +181,6 @@ var codeSwap = mongoose.Schema({
       required: true,
       unique : false
     },
-    topic:{type:String,
-      required :true,
-      unique : false
-    },
     total_ques:{type: String,
       required: true,
       unique : false
@@ -674,7 +670,7 @@ app.get('/viewdata',(req , res) =>{
  });
 
 
-app.get('/leaderboard',(req , res) =>{
+app.get('/leaderboard/nodejs',(req , res) =>{
     Code.find().sort({percentage: 'desc'}).exec(function(err , i){
         if (err) return console.log(err);
 
