@@ -181,6 +181,10 @@ var codeSwap = mongoose.Schema({
       required: true,
       unique : false
     },
+    topic:{type:String,
+      required :true,
+      unique : false
+    },
     total_ques:{type: String,
       required: true,
       unique : false
