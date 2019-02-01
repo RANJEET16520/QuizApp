@@ -670,11 +670,12 @@ app.get('/viewdata',(req , res) =>{
  });
 
 
-app.get('/leaderboard/nodejs',(req , res) =>{
-    Code.find().sort({percentage: 'desc'}).exec(function(err , i){
+app.get('/leaderboard/:topic',(req , res) =>{
+  let par1 = req.params.topic;
+    Test.find({"topic" : par1}).sort({percentage: 'desc'}).exec(function(err , i){
         if (err) return console.log(err);
 
-        res.render('leader',{Code: i});
+        res.render('leader',{Test: i});
      })
  });
 
