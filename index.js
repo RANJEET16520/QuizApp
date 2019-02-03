@@ -516,6 +516,12 @@ app.get('/review', function(req, res) {
 
 
 
+app.get('/loaderio-8c5ea0416ac343e72bc71126374d6478', function (req, res)
+{
+    res.render('loaderio-8c5ea0416ac343e72bc71126374d6478');
+});
+
+
 app.get('/register', function (req, res)
 {
     res.render('reg');
