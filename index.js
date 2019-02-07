@@ -730,6 +730,10 @@ app.post('/login',function (req,res) {
          if(res1.length>0 && passwordHash.verify(password, res1[0].password))
          {
          	req.session.rollno = rollno;
+          app.use(function(req, res, next) {
+  res.locals.rollno = req.session.rollno;
+  next();
+});
           res.redirect('/');
          }
          else
