@@ -7,6 +7,7 @@ var
   cookieParser = require('cookie-parser'),
   cookieSession = require('cookie-session'),
   mailer = require('express-mailer'),
+  PDF = require('pdfkit'),
   quizzer = require('node-quizzer'),
   passwordHash = require('password-hash'),
   _ = require('underscore-node'),
@@ -43,7 +44,7 @@ var
 // var passwordHash = require('password-hash');
 // var alert = require('alert-node');
 // var pdf = require('express-pdf');
-// var PDF = require('pdfkit'); 
+// 
 // var mailer = require('express-mailer');
 // var session = require('express-session');
 // var cookieSession = require('cookie-session');
@@ -239,6 +240,18 @@ var createSchema = mongoose.Schema({
     }
 });
 var Create = mongoose.model("Create", createSchema);
+
+
+
+var animalSchema = mongoose.Schema({
+    name: String,
+    type: String,
+    tags: { type: [String], index: true } // field level
+  });
+
+var Animal = mongoose.model("Animal", animalSchema);
+
+
 
 
 // const storage = cloudinaryStorage({
@@ -623,7 +636,7 @@ app.post('/fac_login',function (req,res) {
             console.log('OK');
             console.log(res2[0].teach_id);
             req.session.uid = 'string';
-            res.redirect('/quiz');
+            res.redirect('/quiz11');
          }
          else
          {
@@ -730,10 +743,6 @@ app.post('/login',function (req,res) {
          if(res1.length>0 && passwordHash.verify(password, res1[0].password))
          {
          	req.session.rollno = rollno;
-          app.use(function(req, res, next) {
-  res.locals.rollno = req.session.rollno;
-  next();
-});
           res.redirect('/');
          }
          else
@@ -909,6 +918,35 @@ app.post('/createquiz',function (req,res) {
 
 
 });
+
+
+
+app.get('/linking',(req , res) =>{
+    Person.find().exec(function(err , i){
+        if (err) return console.log(err);
+
+        res.render('linking',{Person: i});
+     })
+ });
+
+
+app.get('/tenders/:rollno', function(req,res){
+  let par1 = req.params.rollno;
+  
+  const doc = new PDF();
+  let filename = par1;
+  filename = encodeURIComponent(filename)+'.pdf';
+
+  res.setHeader('Content-disposition', 'attachment; filename="' + filename);
+  res.setHeader('Content-type', 'application/pdf');
+  const content ="Billing of your order "+"\n"+"Name: " +"\n"+ "Bill By: " +"\n"+"Bill To: " +"\n"+ "Date: ";
+  doc.y = 300;
+
+  doc.text(content, 50, 50);
+  doc.pipe(res);
+  doc.end();
+});
+
 
 
 

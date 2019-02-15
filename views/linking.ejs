@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+<h1>All Registered Students</h1>
+ <a href="https://www.w3schools.com/html/">Visit our HTML tutorial</a> 
+  <ul class="employees">
+  <% for(var i=0; i<Person.length; i++) {%>
+    <li class="employees">
+      <a href="/tenders/<%=Person[i].rollno%>"><span><%="Roll No.: " + Person[i].rollno + ", "%> </span></a>
+      <span><%="Email Add: " + Person[i].email%></span>
+    </li>
+  <% } %>
+</ul>
+</ul>
+</div>
+</body>
+</html>
