@@ -2,28 +2,42 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <style>
 	 <style>
+	 .carousel-inner img {
+	 	width: 100%;
+      height: 200px;
+  }
     a { color: #496eaa;
     text-decoration: none }
     .logo img{
 
-     padding-left: 50px;
-     padding-top : 20px;
+     padding-left: 30px;
+     padding-top : 0px;
     }
     .logo h1 {
+
     	float: right;
+    	float: top;
     	margin: 0;
+    	font-size: 80px;
     	text-align: center;
     	margin-top: 50px;
-    	margin-right: 450px;
+    	margin-right: 495px;
     	padding-top: 0px;
     	color: darkblue;
     	font-size: 50px;
 
     }
     .uppermost {
-    	height: 5px;
-    	background-color: grey;
+    	height: 30px;
+    	background-color: darkblue;
     	padding-top: -4px;
     }
     .second{
@@ -81,7 +95,7 @@
 	<a href="#">Public Grievences</a>
 </div>
 	<div class="logo">
-	<img src="https://www.bemlindia.in/images/logo_beml1.png" alt="beml_logo" width="125" height="125">
+	<img src="https://www.bemlindia.in/images/logo_beml1.png" alt="beml_logo" width="250" height="200">
 	<h1>BEML LIMITED</h1>
 
 </div>
@@ -127,6 +141,39 @@
   </div>
 </div>
 </div>
+
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://www.sih.gov.in/img/banner_SIH2019.png" alt="Los Angeles" width="1400" height="350">
+    </div>
+    <div class="carousel-item">
+      <img src="http://wowslider.com/sliders/demo-93/data1/images/lake.jpg" alt="Chicago" width="1400" height="350">
+    </div>
+    <div class="carousel-item">
+      <img src="https://www.sih.gov.in/img/banner_SIH2019.png" alt="New York" width="1400" height="350">
+    </div>
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+
 <div>
 <h1>All Tenders</h1>
  <a href="#">Go to Home</a> 
