@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html>
+<head>
+	 <style>
+    a { color: #496eaa;
+    text-decoration: none } /* CSS link color */
+  </style>
+</head>
 <body>
 <div>
-<h1>All Registered Students</h1>
- <a href="https://www.w3schools.com/html/">Visit our HTML tutorial</a> 
+<h1>All Tenders</h1>
+ <a href="#">Go to Home</a> 
   <ul class="employees">
   <% for(var i=0; i<Person.length; i++) {%>
     <li class="employees">
-      <a href="/tenders/<%=Person[i].rollno%>"><span><%="Roll No.: " + Person[i].rollno + ", "%> </span></a>
-      <span><%="Email Add: " + Person[i].email%></span>
+      <a href="/tenders/<%=Person[i].rollno%>"><span><%="Roll No.: " + Person[i].rollno%> </span></a>
+      <br><br>
+      
     </li>
   <% } %>
 </ul>
