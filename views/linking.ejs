@@ -10,6 +10,19 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
   <style>
 	 <style>
+   .header img {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #555;
+}
+
+.header h1 {
+  position: relative;
+  text-align: center;
+  top: 18px;
+  left: 10px;
+}
 	 .carousel-inner img {
 	 	width: 100%;
       height: 200px;
@@ -33,6 +46,7 @@
     	margin-top: 50px;
     	margin-right: 495px;
     	padding-top: 0px;
+
     	color: darkblue;
     	font-size: 50px;
     	font-weight: bold;
@@ -97,10 +111,10 @@
 	<a href="#">RTI</a> |
 	<a href="#">Public Grievences</a>
 </div>
-	<div class="logo">
-	<img src="https://www.bemlindia.in/images/logo_beml1.png" alt="beml_logo" width="200" height="150">
-	<h1><bold>BEML LIMITED</bold></h1>
 
+<div class="header">
+  <img src="https://www.bemlindia.in/images/logo_beml1.png" alt="logo" width="200" height="150" />
+<!--   <h1>My website name</h1> -->
 </div>
 <div class="drop">
 <div class="dropdown">
@@ -158,13 +172,13 @@
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="http://wowslider.com/sliders/demo-93/data1/images/sunset.jpg" alt="Los Angeles" width="3000" height="350">
+      <img src="http://wowslider.com/sliders/demo-93/data1/images/sunset.jpg" alt="Los Angeles" width="1500" height="350">
     </div>
     <div class="carousel-item">
-      <img src="http://wowslider.com/sliders/demo-93/data1/images/lake.jpg" alt="Chicago" width="3000" height="350">
+      <img src="http://wowslider.com/sliders/demo-93/data1/images/lake.jpg" alt="Chicago" width="1500" height="350">
     </div>
     <div class="carousel-item">
-      <img src="http://wowslider.com/sliders/demo-93/data1/images/sunset.jpg" alt="New York" width="3000" height="350">
+      <img src="http://wowslider.com/sliders/demo-93/data1/images/sunset.jpg" alt="New York" width="1500" height="350">
     </div>
   </div>
   
@@ -191,5 +205,6 @@
 </ul>
 </ul>
 </div>
+ <%- include content.ejs %>
 </body>
 </html>
