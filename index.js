@@ -6,6 +6,7 @@ var
   path = require('path'),
   cookieParser = require('cookie-parser'),
   cookieSession = require('cookie-session'),
+  randomUrl = require('random-url'),
   mailer = require('express-mailer'),
   PDF = require('pdfkit'),
   quizzer = require('node-quizzer'),
@@ -50,7 +51,7 @@ var
 // var cookieSession = require('cookie-session');
 // var nodemailer = require('nodemailer');
 // var mailer = require('express-mailer');
-// var randomUrl = require('random-url');
+// 
 // var async = require('async');
 // var passport = require('passport');
 // var LocalStrategy = require('passport-local').Strategy;
@@ -349,6 +350,24 @@ app.get('/just', function (req, res) {
     console.log(req.session.rollno);
 });
 
+app.get('/password', function (req, res) {
+    res.render('password');
+});
+
+
+
+app.post('/password',function (req,res) {
+	pass = req.body.password;
+	if(pass=="PKMKB")
+	{
+		res.redirect('/');
+	}
+	else
+	{
+		res.send("enter correct credentials");
+	}
+});
+
 
 
 app.get('/profile/:rollno', function(req, res)
@@ -446,6 +465,15 @@ app.get('/tokenize', function(req, res) {
 
   res.set('Content-Type', 'text/plain');
   res.send(tokenUrl);
+});
+
+
+app.get('/pops', function(req, res) {
+  res.render('pops');
+});
+
+app.get('/tender', function(req, res) {
+  res.render('tender');
 });
 
 
@@ -810,22 +838,22 @@ app.get('/logout', function (req, res) {
 
 
 
-// app.post('/forgot_password', function (req, res, next) {
-//   var email1 = randomUrl('https');
-//   console.log(email1);
-//   app.mailer.send('email', {
-//     to: req.body.email,
-//     subject: 'Test Email',
-//     otherProperty: 'Other Property'
-//   }, function (err) {
-//     if (err) {
-//       console.log(err);
-//       res.send('There was an error sending the email');
-//       return;
-//     }
-//     res.send('Email Sent');
-//   });
-// });
+app.post('/forgot_password', function (req, res, next) {
+  var email1 = randomUrl('https');
+  console.log(email1);
+  app.mailer.send('email', {
+    to: req.body.email,
+    subject: 'Test Email',
+    otherProperty: 'Other Property'
+  }, function (err) {
+    if (err) {
+      console.log(err);
+      res.send('There was an error sending the email');
+      return;
+    }
+    res.send('Email Sent');
+  });
+});
 
 app.get('/forgot_password',function(req, res){
   res.render('forgot_password');
@@ -928,6 +956,9 @@ app.get('/linking',(req , res) =>{
         res.render('linking',{Person: i});
      })
  });
+
+
+
 
 
 app.get('/tenders/:rollno', function(req,res){
