@@ -12,7 +12,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   font-size:16px;
 }
-.mobile-menu {
+.mobile {
   margin-top: 0px;
   display:block;
   width:100%;
@@ -22,10 +22,10 @@ font-weight: 400;
 width:100%;
 text-align:center;
   position: relative;
-  margin:0 auto;
+  margin-left: 0;
 }
 /*Strip the ul of padding and list styling*/
-.mobile-menu ul {
+.mobile ul {
   list-style-type:none;
   margin: 0 auto;
   padding-left:0;
@@ -36,14 +36,14 @@ text-align:center;
 }
 
 /*Create a horizontal list with spacing*/
-.mobile-menu li {
+.mobile li {
   display:inline-block;
   /*float: left;
   margin-right: 1px;*/
 }
 
 /*Style for menu links*/
-.mobile-menu li a {
+.mobile li a {
   display:block;
   min-width:140px;
   text-align: center;
@@ -62,13 +62,13 @@ transition: all 0.4s ease 0s;
 }
 
 /*Hover state for top level links*/
-.mobile-menu li:hover a {
+.mobile li:hover a {
   color: #4db3ff;
   background-color:#ccddee;
 }
 
 /*Style for dropdown links*/
-.mobile-menu li:hover ul a {
+.mobile li:hover ul a {
   background: #f3f3f3;
   color: #2f3036;
   height: 40px;
@@ -76,23 +76,23 @@ transition: all 0.4s ease 0s;
 }
 
 /*Hover state for dropdown links*/
-.mobile-menu li:hover .mobile-menu ul a:hover {
+.mobile li:hover .mobile-menu ul a:hover {
   color: #4db3ff;
 }
 
 /*Hide dropdown links until they are needed*/
-.mobile-menu li ul {
+.mobile li ul {
   display: none;
 }
 
 /*Make dropdown links vertical*/
-.mobile-menu li ul li {
+.mobile li ul li {
   display: block;
   float: none;
 }
 
 /*Prevent text wrapping*/
-.mobile-menu li ul li a {
+.mobile li ul li a {
   width: auto;
   min-width: 100px;
   padding: 0 20px;
@@ -100,7 +100,7 @@ transition: all 0.4s ease 0s;
 
 
 /*Style 'show menu' label button and hide it by default*/
-.mobile-menu .show-menu {
+.mobile .show-menu {
   text-decoration: none;
   color: #fff;
   background: #8aa8bd;
@@ -111,24 +111,24 @@ transition: all 0.4s ease 0s;
   text-transform: uppercase;
 }
 
-.mobile-menu .show-menu span{
+.mobile .show-menu span{
    padding-left: 35px;
 }
 
 /*Hide checkbox*/
-.mobile-menu input[type=checkbox]{
+.mobile input[type=checkbox]{
     display: none;
 }
 
 /*Show menu when invisible checkbox is checked*/
-.mobile-menu input[type=checkbox]:checked ~ #menu{
+.mobile input[type=checkbox]:checked ~ #menu{
     display: block;
 }
 
 /*Responsive Styles*/
 
 @media screen and (max-width : 800px){
-  .mobile-menu .lines {
+  .mobile .lines {
     border-bottom: 15px double #f8f8f8; 
     border-top: 5px solid #f8f8f8; 
     content:"";
@@ -138,20 +138,20 @@ transition: all 0.4s ease 0s;
   float: right;
 }
   /*Make dropdown links appear inline*/
-  .mobile-menu ul {
+  .mobile ul {
     position: static;
     display: none;
   }
   /*Create vertical spacing*/
-  .mobile-menu li {
+  .mobile li {
     margin-bottom: 1px;
   }
   /*Make all menu links full width*/
-  .mobile-menu ul li, .mobile-menu li a {
+  .mobile ul li, .mobile- li a {
     width: 100%;
   }
   /*Display 'show menu' link*/
-  .mobile-menu .show-menu {
+  .mobile .show-menu {
     display:block;
   }
 }
@@ -159,7 +159,7 @@ transition: all 0.4s ease 0s;
 </head>
 <body>
 
-<nav class="mobile-menu">
+<nav class="mobile">
 <label for="show-menu" class="show-menu"><span>Menu</span><div class="lines"></div></label>
   <input type="checkbox" id="show-menu">
     <ul id="menu">
