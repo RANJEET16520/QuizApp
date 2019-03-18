@@ -350,6 +350,11 @@ app.get('/just', function (req, res) {
     console.log(req.session.rollno);
 });
 
+
+app.get('/newhome', function (req, res) {
+    res.render('newhome');
+});
+
 app.get('/password', function (req, res) {
     res.render('password');
 });

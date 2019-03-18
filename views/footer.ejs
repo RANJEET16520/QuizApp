@@ -1,114 +1,286 @@
-<link rel="stylesheet"  href="/static/footer.css">
+<head>
+  <style>
+     h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {}
+        
+        section {
+            padding: 60px 0;
+            min-height: 100vh;
+        }
+        
+        a,
+        a:hover,
+        a:focus,
+        a:active {
+            text-decoration: none;
+            outline: none;
+        }
+        
+        a,
+        a:active,
+        a:focus {
+            color: #6f6f6f;
+            text-decoration: none;
+            transition-timing-function: ease-in-out;
+            -ms-transition-timing-function: ease-in-out;
+            -moz-transition-timing-function: ease-in-out;
+            -webkit-transition-timing-function: ease-in-out;
+            -o-transition-timing-function: ease-in-out;
+            transition-duration: .2s;
+            -ms-transition-duration: .2s;
+            -moz-transition-duration: .2s;
+            -webkit-transition-duration: .2s;
+            -o-transition-duration: .2s;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        img {
+    max-width: 100%;
+    height: auto;
+}.footer-section {
+  background-color: #A9A9A9;
+  position: relative;
+  overflow: hidden;
+  height: 20%;
+  z-index: 9;
+}
+.footer-section:before {
+  content: '';
+  position: absolute;
+  top: -146%;
+  left: -18%;
+  width: 44%;
+  height: 257%;
+  transform: rotate(54deg);
+  background-color:#A9A9A9;
+  -webkit-transform: rotate(54deg);
+  -moz-transform: rotate(54deg);
+  -ms-transform: rotate(54deg);
+  -o-transform: rotate(54deg);
+  z-index: -10;
+}
+.footer-section:after {
+  position: absolute;
+  content: '';
+  background-color: #A9A9A9;
+  top: -15%;
+  right: 4%;
+  width: 26%;
+  height: 200%;
+  transform: rotate(44deg);
+  -webkit-transform: rotate(44deg);
+  -moz-transform: rotate(44deg);
+  -ms-transform: rotate(44deg);
+  -o-transform: rotate(44deg);
+  z-index: -10;
+}
+.footer-top {
+  padding-top: 96px;
+  padding-bottom: 50px;
+}
+.footer-top p,
+.company-footer-contact-list li {
+  color: #ffffff;
+}
+.company-footer-contact-list {
+  margin-top: 10px;
+}
+.company-footer-contact-list li {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+}
+.company-footer-contact-list li+li {
+  margin-top: 5px;
+}
+.company-footer-contact-list li i {
+  margin-right: 10px;
+  font-size: 20px;
+  display: inline-block;
+}
+.footer-top .site-logo {
+    margin-bottom: 25px;
+    display: block;
+    max-width: 170px;
+}
+.widget-title {
+  text-transform: capitalize;
+}
+.footer-top .widget-title {
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+.courses-link-list li+li {
+  margin-top: 10px;
+}
+.courses-link-list li a {
+  color: #ffffff;
+  text-transform: capitalize;
+  font-family: var(--para-font);
+  font-weight: 400;
+}
+.courses-link-list li a:hover {
+  color: #ffb606;
+}
+.courses-link-list li i {
+  margin-right: 5px;
+}
+.footer-top .small-post-title a {
+  font-family: var(--para-font);
+  color: #ffffff;
+  font-weight: 400;
+}
+.small-post-item .post-date {
+  color: #00008B;
+  margin-bottom: 3px;
+  font-family: var(--para-font);
+  font-weight: 400;
+}
+.small-post-list li+li {
+  margin-top: 30px;
+}
+.news-letter-form {
+  margin-top: 15px;
+}
+.news-letter-form input {
+  width: 100%;
+  padding: 12px 25px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border: none;
+}
+.news-letter-form input[type="submit"] {
+  width: auto;
+  border: none;
+  background-color: #00008B;
+  padding: 9px 30px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  color: #ffffff;
+  margin-top: 10px;
+}
+.footer-bottom {
+  padding: 13px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.149);
+}
+.copy-right-text {
+  color: #ffffff;
+}
+.copy-right-text a {
+  color: #00008B;
+}
+.terms-privacy li+li {
+  margin-left: 30px;
+}
+.terms-privacy li a {
+  color: #ffffff;
+  position: relative;
+}
+.terms-privacy li a:after {
+  position: absolute;
+  content: '-';
+  color: #ffffff;
+  display: inline-block;
+  top: 0;
+  right: -18px;
+}
+.terms-privacy li+li a:after {
+  display: none;
+}
+  </style>
+</head>
+
+
+
 <footer class="footer-section">
-        <div class="container">
-            <div class="footer-cta pt-5 pb-5">
-                <div class="row">
-                    <div class="col-xl-4 col-md-4 mb-30">
-                        <div class="single-cta">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div class="cta-text">
-                                <h4>Find us</h4>
-                                <span>1010 Avenue, sw 54321, chandigarh</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-4 mb-30">
-                        <div class="single-cta">
-                            <i class="fas fa-phone"></i>
-                            <div class="cta-text">
-                                <h4>Call us</h4>
-                                <span>9876543210 0</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-4 mb-30">
-                        <div class="single-cta">
-                            <i class="far fa-envelope-open"></i>
-                            <div class="cta-text">
-                                <h4>Mail us</h4>
-                                <span>mail@info.com</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget company-intro-widget">
+              <a href="index.html" class="site-logo"><img src="https://www.bemlindia.in/images/logo_beml1.png" alt="logo"></a>
+              <p>
+
+This is the website of BEML Limited for SRM(TENDER APPLICATION),
+A Public Sector Undertaking under the Ministry of Defence, Government of India
+</p>
+              <ul class="company-footer-contact-list">
+                <li><i class="fas fa-phone"></i>0123456789</li>
+                <li><i class="fas fa-clock"></i>Mon - Sat 8.00 - 18.00</li>
+              </ul>
             </div>
-            <div class="footer-content pt-5 pb-5">
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 mb-50">
-                        <div class="footer-widget">
-                            <div class="footer-logo">
-                                <a href="index.html"><img src="https://i.ibb.co/QDy827D/ak-logo.png" class="img-fluid" alt="logo"></a>
-                            </div>
-                            <div class="footer-text">
-                                <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
-                                elit,Lorem ipsum dolor sit amet.</p>
-                            </div>
-                            <div class="footer-social-icon">
-                                <span>Follow us</span>
-                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
-                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
-                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
-                        <div class="footer-widget">
-                            <div class="footer-widget-heading">
-                                <h3>Useful Links</h3>
-                            </div>
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">about</a></li>
-                                <li><a href="#">services</a></li>
-                                <li><a href="#">portfolio</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Our Services</a></li>
-                                <li><a href="#">Expert Team</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">Latest News</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
-                        <div class="footer-widget">
-                            <div class="footer-widget-heading">
-                                <h3>Subscribe</h3>
-                            </div>
-                            <div class="footer-text mb-25">
-                                <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
-                            </div>
-                            <div class="subscribe-form">
-                                <form action="#">
-                                    <input type="text" placeholder="Email Address">
-                                    <button><i class="fab fa-telegram-plane"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div><!-- widget end -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget course-links-widget">
+              <h5 class="widget-title">Recent Tenders</h5>
+              <ul class="courses-link-list">
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Tender 1</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Tender 2</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Tender 3</a></li>
+              </ul>
+            </div>
+          </div><!-- widget end -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget latest-news-widget">
+              <h5 class="widget-title">lastest news</h5>
+              <ul class="small-post-list">
+                <li>
+                  <div class="small-post-item">
+                    <a href="#" class="post-date">July 18, 2018</a>
+                    <h6 class="small-post-title"><a href="#">BEML is _________________</a></h6>
+                  </div>
+                </li><!-- small-post-item end -->
+                <li>
+                  <div class="small-post-item">
+                    <a href="#" class="post-date">July 28, 2018</a>
+                    <h6 class="small-post-title"><a href="#">BEML is ______________</a></h6>
+                  </div>
+                </li><!-- small-post-item end -->
+              </ul>
+            </div>
+          </div><!-- widget end -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget newsletter-widget">
+              <h5 class="widget-title">Newsletter</h5>
+              <div class="footer-newsletter">
+                <p>Sign Up to Our Newsletter to Get Latest Updates about the tenders.</p>
+                <form class="news-letter-form">
+                  <input type="email" name="news-email" id="news-email" placeholder="Your email address">
+                  <input type="submit" value="Send">
+                </form>
+              </div>
+            </div>
+          </div><!-- widget end -->
+        </div>
+      </div> 
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-sm-left text-center">
+              <span class="copy-right-text">© 2019 <a href="https://codepen.io/anupkumar92">Team THE LOSERS!</a> All Rights Reserved.</span>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <ul class="terms-privacy d-flex justify-content-sm-end justify-content-center">
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
             </div>
         </div>
-        <div class="copyright-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 text-center text-lg-left">
-                        <div class="copyright-text">
-                            <p>Copyright &copy; 2018, All Right Reserved <a href="https://codepen.io/anupkumar92/">Anup</a></p>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
-                        <div class="footer-menu">
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Terms</a></li>
-                                <li><a href="#">Privacy</a></li>
-                                <li><a href="#">Policy</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+      </div>
+    </div><!-- footer-bottom end -->
+</footer>
