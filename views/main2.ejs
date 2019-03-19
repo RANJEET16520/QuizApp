@@ -15,94 +15,15 @@
 
     <title>QuizApp</title>
   </head>
-
+  <%- include newhome.ejs %>
   <body>
     <div class="container">
       <section id="home">
 
-        <div class="menu-btn">Menu</div>
 
-        <nav>
-          <a href="/home">Home</a>
-          <a href="/takeaquiz">Take a Quiz</a>
-          <a href="https://shkamboj.github.io" target="_blank">About Me</a>
-          <a href="fac_login">Submit Questions</a>
-          <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: "Lato", sans-serif;
-}
 
-.sidepanel  {
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  height: 250px;
-  top: 0;
-  right: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
+      
 
-.sidepanel a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #FA8072;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidepanel a:hover {
-  color: #f1f1f1;
-}
-
-.sidepanel .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-}
-
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #FA8072;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-}
-
-.openbtn:hover {
-  background-color:#444;
-}
-</style>
-</head>
-<body>
-
-<div id="mySidepanel" class="sidepanel">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="/leaderboard/nodejs">NodeJS</a>
-  <a href="/leaderboard/Blockchain">BlockChain</a>
-  <a href="/leaderboard/javascript">Javascript</a>
-</div>
-
-<button class="openbtn" onclick="openNav()">☰ LeaderBoards</button> 
-
-<script>
-function openNav() {
-  document.getElementById("mySidepanel").style.width = "250px";
-}
-
-function closeNav() {
-  document.getElementById("mySidepanel").style.width = "0";
-}
-</script>
-        </nav>
-        </nav>
 
         <div class="home-content">
           <h1>QuizApp</h1>
@@ -116,13 +37,9 @@ function closeNav() {
 
           <div class="social-icon">
             <a href="https://www.facebook.com/teamexe" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          </div>
-          <a class="register-btn hvr-buzz-out" href="signup">Register/Login</a>
-        </div>
       </section> <!-- home section -->
 
       <section id="speakers">
-        <img class="speaker-icon" src="https://image.ibb.co/ixMeYo/music_microphone_old.png" alt="Microphone Icon"/>
         <h2 class="section-heading">QuizApp</h2>
         <p>
           It is a portal for online quizzes, which can be used for any type of evaluation. Show your talent here.
@@ -175,7 +92,9 @@ function closeNav() {
           </div>
         </div>
 
-        <a class="register-today-btn" href="signup">Register Today</a>
+        <a class="register-today-btn" align="right" target="_blank" href = "https://m.me/635472446884046">Have doubts? Ask to bot</a>
+
+
 
         <span class="copyright"> Designed & Developed by : Shubham Kamboj, Copyright &copy; 2018 Shubham Kamboj . All Rights Reserved.</span>
       </footer>
