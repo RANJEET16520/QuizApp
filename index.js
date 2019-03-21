@@ -727,6 +727,10 @@ app.get('/viewdata',(req , res) =>{
  });
 
 
+app.get('/leader_route',(req , res) =>{
+    res.render('leader_route');
+ });
+
 app.get('/leaderboard/:topic',(req , res) =>{
   let par1 = req.params.topic;
     Test.find({"topic" : par1}).sort({percentage: 'desc'}).exec(function(err , i){
