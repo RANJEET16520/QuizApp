@@ -482,6 +482,11 @@ app.get('/tender', function(req, res) {
 });
 
 
+app.get('/privacy', function(req, res) {
+  res.render('privacy');
+});
+
+
 
 app.get('/takeaquiz', function (req, res) {
   if(req.session.rollno)
