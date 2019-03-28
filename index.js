@@ -546,7 +546,7 @@ app.post('/forgot_password',function(req, res){
   transportMethod: 'SMTP',
   auth: {
     user: 'iiitu16118@gmail.com',
-    pass: 'qwerty123'
+    pass: 'fuddubanda'
   }
     });
 
