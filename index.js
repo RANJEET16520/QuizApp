@@ -7,7 +7,9 @@ var
   cookieParser = require('cookie-parser'),
   cookieSession = require('cookie-session'),
   randomUrl = require('random-url'),
+  nodemailer = require('nodemailer'),
   mailer = require('express-mailer'),
+  buildUrl = require('build-url'),
   PDF = require('pdfkit'),
   quizzer = require('node-quizzer'),
   passwordHash = require('password-hash'),
@@ -852,54 +854,33 @@ app.get('/logout', function (req, res) {
 
 
 
-app.post('/forgot_password', function (req, res, next) {
-  var email1 = randomUrl('https');
-  console.log(email1);
-  app.mailer.send('email', {
-    to: req.body.email,
-    subject: 'Test Email',
-    otherProperty: 'Other Property'
-  }, function (err) {
-    if (err) {
-      console.log(err);
-      res.send('There was an error sending the email');
-      return;
-    }
-    res.send('Email Sent');
-  });
-});
 
 app.get('/forgot_password',function(req, res){
   res.render('forgot_password');
 });
 
 
-
-
-
-
 app.post('/forgot_password',function(req, res){
   nodemailer.createTestAccount((err, account) => {
     let transporter = nodemailer.createTransport({
 
-
-       from: 'iiitu16118@gmail.com',
+  from: 'nithparadox@gmail.com',
   host: 'smtp.gmail.com',
   secureConnection: true,
   port: 465,
   transportMethod: 'SMTP',
   auth: {
-    user: 'iiitu16118@gmail.com',
-    pass: 'fuddubanda'
+    user: 'nithparadox@gmail.com',
+    pass: 'finalLOVE@12'
   }
     });
 
-    var mrl = randomUrl('https');
+    var mrl = buildUrl('https://play.google.com/store/apps/details?id=com.exe.paradoxplay');
 
-var text = 'please click on the link to change password: \n\n' + mrl;
+var text = 'please click on the link to download the Paradox App: \n\n' + mrl;
 
     let mailOptions = {
-        from: 'iiitu16118@gmail.com',
+        from: 'nithparadox@gmail.com',
         to: req.body.email,
         subject: 'Reset Password',
         text: text
@@ -910,21 +891,7 @@ var text = 'please click on the link to change password: \n\n' + mrl;
         }
     else
     {
-    var link = new Link({
-    link: mrl,
-    count: count
-    });
-    link.save(function (err){
-    if(err)
-    {
-      console.log(err);
-    }
-    else
-    {
-      alert('Please Check Your Email');
       res.redirect('/mailsent');
-    }
-  });
   }
     });
 });
