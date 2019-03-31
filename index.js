@@ -4,6 +4,7 @@ var
   fs = require('fs'),
   mongoose = require('mongoose'),
   path = require('path'),
+  dotenv = require('dotenv').config(),
   cookieParser = require('cookie-parser'),
   cookieSession = require('cookie-session'),
   randomUrl = require('random-url'),
@@ -314,35 +315,6 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
 
-
-mailer.extend(app, {
-  from: 'iiitu16118@gmail.com',
-  host: 'smtp.gmail.com', // hostname
-  secureConnection: true, // use SSL
-  port: 465, // port for secure SMTP
-  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
-  auth: {
-    user: 'iiitu16118@gmail.com',
-    pass: 'PAPAmummy@143'
-  }
-});
-
-
-
-// cloudinary.config({
-// cloud_name: quizerapp,
-// api_key: 118996875592891,
-// api_secret: J47Z-EOJC5FPNfBxGXOtzzz50nM
-// });
-
-
-
-
-// app.get('/quizzer', function (req, res) {
-//   delete req.session.uid;
-//   res.redirect('https://quizzersh.herokuapp.com/');
-// });
-
 app.get('/xyz', function(req, res){
    if(req.session.page_views){
       req.session.page_views++;
@@ -518,14 +490,14 @@ app.post('/images',function(req, res){
   nodemailer.createTestAccount((err, account) => {
     let transporter = nodemailer.createTransport({
 
-  from: 'nithparadox@gmail.com',
+  from: process.env.gmail_id,
   host: 'smtp.gmail.com',
   secureConnection: true,
   port: 465,
   transportMethod: 'SMTP',
   auth: {
-    user: 'nithparadox@gmail.com',
-    pass: 'finalLOVE@12'
+    user: process.env.gmail_id,
+    pass: process.env.gmail_password
   }
     });
 
@@ -534,7 +506,7 @@ var text = 'Hi ' + req.body.name  + ' You can now download your images from here
 
 
     let mailOptions = {
-        from: 'nithparadox@gmail.com',
+        from: process.env.gmail_id,
         to: req.body.email,
         subject: 'Your Images',
         text: text,
@@ -941,8 +913,8 @@ app.post('/forgot_password',function(req, res){
   port: 465,
   transportMethod: 'SMTP',
   auth: {
-    user: 'nithparadox@gmail.com',
-    pass: 'finalLOVE@12'
+    user: process.env.gmail_id,
+    pass: process.env.gmail_password
   }
     });
 
@@ -951,21 +923,18 @@ app.post('/forgot_password',function(req, res){
 var text = 'please click on the link to download the Paradox App: \n\n' + mrl;
 
 var maillist = [
-  'iiitu16118@gmail.com',
-  'trinitydublin376@gmail.com',
-  'uditgulati0@gmail.com',
-
+  process.env.mail,
 ];
 
     let mailOptions = {
-        from: 'nithparadox@gmail.com',
+        from: process.env.gmail_id,
         to: maillist,
         subject: 'Reset Password',
         text: text,
         attachments: [
        	{   // use URL as an attachment
             filename: 'license.txt',
-            path: 'https://raw.github.com/nodemailer/nodemailer/master/LICENSE'
+            path: 'https://raw.github.com/nodemailer/nodemailer/master/LICENSE' // whatever to be sent
         }
        ]
     };
