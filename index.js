@@ -83,6 +83,23 @@ var Person = mongoose.model("Person", personSchema);
 
 
 
+
+
+var imageSchema = mongoose.Schema({
+    
+    name:{type: String,
+      required: true,
+    },
+    email:{type:String,
+      required :true,
+  },
+    image_link:{type: String,
+      required: false,
+    }
+});
+
+var Image = mongoose.model("Image", imageSchema);
+
 var quizqSchema = mongoose.Schema({
     q1:{
       type: String,
@@ -489,6 +506,58 @@ app.get('/privacy', function(req, res) {
 });
 
 
+app.get('/images', function(req, res) {
+  res.render('images');
+});
+
+
+
+app.post('/images',function(req, res){
+
+
+  nodemailer.createTestAccount((err, account) => {
+    let transporter = nodemailer.createTransport({
+
+  from: 'nithparadox@gmail.com',
+  host: 'smtp.gmail.com',
+  secureConnection: true,
+  port: 465,
+  transportMethod: 'SMTP',
+  auth: {
+    user: 'nithparadox@gmail.com',
+    pass: 'finalLOVE@12'
+  }
+    });
+
+
+var text = 'Hi ' + req.body.name  + ' You can now download your images from here';
+
+
+    let mailOptions = {
+        from: 'nithparadox@gmail.com',
+        to: req.body.email,
+        subject: 'Your Images',
+        text: text,
+        attachments: [
+       	{   // use URL as an attachment
+            filename: 'shubham1.jpg',
+            path: '/home/shkamboj/images_mail/images/shubham1.jpg'
+        }
+       ]
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+    else
+    {
+      res.redirect('/mailsent');
+  }
+    });
+});
+});
+
+
 
 app.get('/takeaquiz', function (req, res) {
   if(req.session.rollno)
@@ -861,6 +930,8 @@ app.get('/forgot_password',function(req, res){
 
 
 app.post('/forgot_password',function(req, res){
+
+
   nodemailer.createTestAccount((err, account) => {
     let transporter = nodemailer.createTransport({
 
@@ -879,11 +950,24 @@ app.post('/forgot_password',function(req, res){
 
 var text = 'please click on the link to download the Paradox App: \n\n' + mrl;
 
+var maillist = [
+  'iiitu16118@gmail.com',
+  'trinitydublin376@gmail.com',
+  'uditgulati0@gmail.com',
+
+];
+
     let mailOptions = {
         from: 'nithparadox@gmail.com',
-        to: req.body.email,
+        to: maillist,
         subject: 'Reset Password',
-        text: text
+        text: text,
+        attachments: [
+       	{   // use URL as an attachment
+            filename: 'license.txt',
+            path: 'https://raw.github.com/nodemailer/nodemailer/master/LICENSE'
+        }
+       ]
     };
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
