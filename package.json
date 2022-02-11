@@ -34,7 +34,7 @@
     "dotenv": "^7.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
+    "express-handlebars": "^5.3.1",
     "express-mailer": "^0.3.1",
     "express-messages": "^1.0.1",
     "express-pdf": "^1.2.2",
