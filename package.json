@@ -19,7 +19,7 @@
   "dependencies": {
     "alert-node": "^1.2.1",
     "assert": "^1.4.1",
-    "async": "^2.6.1",
+    "async": "^2.6.4",
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
